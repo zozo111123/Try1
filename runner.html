@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimuVerse AI - סימולציה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0f0f1e;
+            --secondary-bg: #1a1a2e;
+            --accent-bg: #16213e;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --accent-color: #4ecca3;
+            --accent-hover: #3db88a;
+            --warning-color: #ffd93d;
+            --danger-color: #ff6b6b;
+            --mentor-color: #ffd93d;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Heebo', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Screens */
+        .screen {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Entry Screen */
+        .entry-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .entry-logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .entry-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent-color), #6BCF7F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .entry-description {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(78, 204, 163, 0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: #0f0f1e;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(78, 204, 163, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Survey */
+        .survey-container {
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .survey-progress {
+            height: 4px;
+            background: var(--glass-border);
+            border-radius: 2px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .survey-progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .survey-question {
+            margin-bottom: 32px;
+        }
+
+        .survey-question-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .likert-scale {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .likert-btn {
+            flex: 1;
+            padding: 16px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .likert-btn:hover {
+            border-color: var(--accent-color);
+            background: rgba(78, 204, 163, 0.1);
+        }
+
+        .likert-btn.selected {
+            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: #0f0f1e;
+        }
+
+        .likert-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Chat Interface */
+        .chat-screen {
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 20px 30px;
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 12px;
+            animation: messageSlide 0.3s ease;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.user .chat-avatar {
+            background: var(--accent-color);
+        }
+
+        .chat-message.agent .chat-avatar {
+            background: var(--accent-bg);
+        }
+
+        .chat-bubble {
+            max-width: 70%;
+            padding: 16px 20px;
+            border-radius: 16px;
+            line-height: 1.5;
+        }
+
+        .chat-message.user .chat-bubble {
+            background: var(--accent-color);
+            color: #0f0f1e;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.agent .chat-bubble {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Mentor Tip */
+        .mentor-tip {
+            background: rgba(255, 217, 61, 0.1);
+            border: 2px solid var(--mentor-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            animation: mentorPulse 0.5s ease;
+        }
+
+        @keyframes mentorPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .mentor-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--mentor-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .mentor-tip-text {
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* Chat Controls */
+        .chat-controls {
+            padding: 20px 30px;
+            background: var(--secondary-bg);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 14px 20px;
+            background: var(--accent-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-size: 16px;
+            resize: none;
+            max-height: 120px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn.mic-btn {
+            background: var(--accent-color);
+            color: #0f0f1e;
+        }
+
+        .control-btn.mic-btn.listening {
+            background: var(--danger-color);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Audio Visualizer */
+        .audio-visualizer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 40px;
+            margin: 8px 0;
+        }
+
+        .visualizer-bar {
+            width: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+            animation: visualize 0.8s ease-in-out infinite;
+        }
+
+        .visualizer-bar:nth-child(2) { animation-delay: 0.1s; }
+        .visualizer-bar:nth-child(3) { animation-delay: 0.2s; }
+        .visualizer-bar:nth-child(4) { animation-delay: 0.3s; }
+        .visualizer-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes visualize {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        /* Reflection Screen */
+        .reflection-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .reflection-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .reflection-chat {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Feedback Screen */
+        .feedback-container {
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .feedback-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .feedback-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .radar-chart-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .feedback-text {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .feedback-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+
+        .feedback-section-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Loading */
+        .loading-container {
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--glass-border);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* Error */
+        .error-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .error-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .error-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: var(--danger-color);
+        }
+
+        .error-message {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chat-bubble {
+                max-width: 85%;
+            }
+
+            .likert-scale {
+                flex-direction: column;
+            }
+
+            .likert-btn {
+                width: 100%;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Entry Screen -->
+    <div id="screen-entry" class="screen active">
+        <div class="entry-container glass">
+            <div class="entry-logo">🎭</div>
+            <h1 class="entry-title">SimuVerse AI</h1>
+            <p class="entry-description" id="entry-description">
+                ברוכים הבאים לסימולציה אינטראקטיבית מבוססת בינה מלאכותית
+            </p>
+
+            <form id="entry-form" onsubmit="runner.startSession(event)">
+                <div class="form-group">
+                    <label class="form-label">שם מלא *</label>
+                    <input type="text" class="form-input" id="user-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">גיל</label>
+                    <input type="number" class="form-input" id="user-age" min="1" max="120">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">מגדר</label>
+                    <select class="form-select" id="user-gender">
+                        <option value="">בחר/י</option>
+                        <option value="male">זכר</option>
+                        <option value="female">נקבה</option>
+                        <option value="other">אחר</option>
+                        <option value="prefer-not">מעדיף/ה לא לציין</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">התחל סימולציה</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pre-Survey Screen -->
+    <div id="screen-pre-survey" class="screen">
+        <div class="survey-container glass">
+            <div class="survey-progress">
+                <div class="survey-progress-bar" id="survey-progress"></div>
+            </div>
+
+            <div id="survey-questions"></div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button class="btn btn-secondary" onclick="runner.previousQuestion()" id="btn-prev-question">
+                    ← קודם
+                </button>
+                <button class="btn btn-primary" onclick="runner.nextQuestion()" id="btn-next-question" style="flex: 1;">
+                    הבא →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="screen-chat" class="screen chat-screen">
+        <div class="chat-header">
+            <div>
+                <h2 id="chat-title">סימולציה פעילה</h2>
+                <div style="font-size: 14px; color: var(--text-secondary);">
+                    <span id="chat-status">מוכן</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-secondary" onclick="runner.undoLastExchange()" style="padding: 8px 16px;">
+                    ↶ ביטול
+                </button>
+                <button class="btn btn-danger" onclick="runner.finishSimulation()" style="padding: 8px 16px;">
+                    סיום
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-container" id="chat-messages">
+            <!-- Messages will be inserted here -->
+        </div>
+
+        <div class="chat-controls">
+            <div id="audio-visualizer" class="audio-visualizer hidden">
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+            </div>
+
+            <div class="chat-input-container">
+                <button class="control-btn mic-btn" id="mic-btn" onclick="runner.toggleVoice()">
+                    🎤
+                </button>
+                <textarea class="chat-input" id="chat-input" placeholder="הקלד/י הודעה או השתמש/י במיקרופון..." rows="1"></textarea>
+                <button class="control-btn" onclick="runner.sendMessage()" style="background: var(--accent-color); color: #0f0f1e;">
+                    ➤
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reflection Screen -->
+    <div id="screen-reflection" class="screen">
+        <div class="reflection-container">
+            <h1 class="reflection-title">💭 שלב רפלקציה</h1>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 32px;">
+                בואו נסקור יחד את השיחה שניהלת
+            </p>
+
+            <div class="reflection-chat" id="reflection-messages">
+                <!-- Reflection messages will be inserted here -->
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-input" id="reflection-input" rows="4" placeholder="הקלד/י את תשובתך..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-primary" onclick="runner.sendReflectionResponse()" style="flex: 1;">
+                    שלח תשובה
+                </button>
+                <button class="btn btn-secondary" onclick="runner.skipReflection()">
+                    דלג
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post-Survey Screen -->
+    <div id="screen-post-survey" class="screen">
+        <div class="survey-container glass">
+            <h2 style="text-align: center; margin-bottom: 24px; font-size: 28px;">שאלון סיכום</h2>
+
+            <div class="survey-progress">
+                <div class="survey-progress-bar" id="post-survey-progress"></div>
+            </div>
+
+            <div id="post-survey-questions"></div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button class="btn btn-secondary" onclick="runner.previousPostQuestion()" id="btn-prev-post">
+                    ← קודם
+                </button>
+                <button class="btn btn-primary" onclick="runner.nextPostQuestion()" id="btn-next-post" style="flex: 1;">
+                    הבא →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Screen -->
+    <div id="screen-feedback" class="screen">
+        <div class="feedback-container">
+            <h1 class="feedback-title">🎉 סיימת את הסימולציה!</h1>
+            <p class="feedback-subtitle">הנה המשוב המפורט שלך</p>
+
+            <div class="radar-chart-container">
+                <canvas id="radar-chart" width="400" height="400"></canvas>
+            </div>
+
+            <div class="feedback-text">
+                <h3 class="feedback-section-title">💪 נקודות חוזק</h3>
+                <div class="feedback-section-content" id="feedback-strengths"></div>
+            </div>
+
+            <div class="feedback-text">
+                <h3 class="feedback-section-title">📈 נקודות לשיפור</h3>
+                <div class="feedback-section-content" id="feedback-improvements"></div>
+            </div>
+
+            <button class="btn btn-primary" onclick="runner.downloadReport()" style="margin-top: 24px;">
+                📥 הורד דוח מלא
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="screen-loading" class="screen">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text" id="loading-text">מעבד נתונים...</div>
+        </div>
+    </div>
+
+    <!-- Error Screen -->
+    <div id="screen-error" class="screen">
+        <div class="error-container glass">
+            <div class="error-icon">⚠️</div>
+            <h2 class="error-title">אופס! משהו השתבש</h2>
+            <p class="error-message" id="error-message">
+                לא הצלחנו לטעון את הסימולציה. אנא בדוק את הקישור ונסה שוב.
+            </p>
+            <button class="btn btn-primary" onclick="location.reload()">
+                נסה שוב
+            </button>
+        </div>
+    </div>
+
+    <script src="runner.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחק הנחש - Snake Game</title>
+    <title>SimuVerse AI - Admin Dashboard</title>
     <style>
         * {
             margin: 0;
@@ -11,474 +11,650 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: white;
+        :root {
+            --primary-bg: #0f0f1e;
+            --secondary-bg: #1a1a2e;
+            --accent-bg: #16213e;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --accent-color: #4ecca3;
+            --accent-hover: #3db88a;
+            --warning-color: #ffd93d;
+            --danger-color: #ff6b6b;
         }
 
-        .game-container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
+        body {
+            font-family: 'Segoe UI', 'Heebo', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        #gameCanvas {
-            border: 3px solid white;
-            border-radius: 10px;
-            background-color: #1a1a2e;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            display: block;
-            margin: 0 auto;
-        }
-
-        .score-board {
-            margin-top: 20px;
+        /* Header */
+        .header {
+            padding: 20px 40px;
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--glass-border);
             display: flex;
-            justify-content: space-around;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .score-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.2em;
-        }
-
-        .score-value {
-            font-size: 1.5em;
+        .logo {
+            font-size: 28px;
             font-weight: bold;
-            display: block;
-            margin-top: 5px;
+            background: linear-gradient(135deg, var(--accent-color), #6BCF7F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .controls {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+        .header-actions {
+            display: flex;
+            gap: 15px;
         }
 
-        .controls h3 {
-            margin-bottom: 10px;
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .controls p {
-            margin: 5px 0;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        .game-over {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            display: none;
-            z-index: 1000;
-        }
-
-        .game-over.show {
-            display: block;
-        }
-
-        .game-over h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #f5576c;
-        }
-
-        .mobile-controls {
-            display: none;
-            margin-top: 20px;
-            grid-template-columns: repeat(3, 80px);
-            grid-template-rows: repeat(3, 80px);
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
             gap: 10px;
-            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
+        .tab-btn {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .tab-btn:hover {
+            background: rgba(78, 204, 163, 0.1);
+            border-color: var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #0f0f1e;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(78, 204, 163, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: #0f0f1e;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(78, 204, 163, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff5252;
+        }
+
+        /* File Upload Zone */
+        .file-upload {
+            border: 2px dashed var(--glass-border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--glass-bg);
+        }
+
+        .file-upload:hover,
+        .file-upload.drag-over {
+            border-color: var(--accent-color);
+            background: rgba(78, 204, 163, 0.05);
+        }
+
+        .file-upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        /* Simulations List */
+        .simulations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .simulation-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .simulation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(78, 204, 163, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .simulation-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+
+        .simulation-card-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .simulation-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg);
+            border-top: 1px solid var(--glass-border);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .action-bar-status {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--secondary-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        /* Research Spaces */
+        .spaces-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .space-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .space-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+
+        .space-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .space-link {
+            background: var(--accent-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .space-link-url {
+            flex: 1;
+            font-size: 12px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-controls {
-                display: grid;
+            .header {
+                padding: 16px 20px;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+
+            .simulations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-bar {
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 12px;
             }
         }
 
-        .arrow-btn {
-            width: 80px;
-            height: 80px;
-            font-size: 2em;
-            padding: 0;
-            margin: 0;
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid var(--glass-border);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
         }
 
-        .arrow-up { grid-column: 2; grid-row: 1; }
-        .arrow-left { grid-column: 1; grid-row: 2; }
-        .arrow-down { grid-column: 2; grid-row: 2; }
-        .arrow-right { grid-column: 3; grid-row: 2; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <h1>🐍 משחק הנחש 🐍</h1>
-
-        <canvas id="gameCanvas" width="600" height="600"></canvas>
-
-        <div class="score-board">
-            <div class="score-item">
-                <span>ציון נוכחי</span>
-                <span class="score-value" id="currentScore">0</span>
-            </div>
-            <div class="score-item">
-                <span>שיא</span>
-                <span class="score-value" id="highScore">0</span>
-            </div>
-        </div>
-
-        <div class="controls">
-            <h3>הוראות משחק:</h3>
-            <p>🎮 השתמש בחיצים במקלדת כדי לשלוט בנחש</p>
-            <p>🍎 אסוף תפוחים כדי לצבור נקודות</p>
-            <p>⚠️ אל תפגע בקירות או בעצמך!</p>
-            <button id="startBtn" onclick="startGame()">התחל משחק</button>
-        </div>
-
-        <div class="mobile-controls">
-            <button class="arrow-btn arrow-up" onclick="changeDirection('UP')">↑</button>
-            <button class="arrow-btn arrow-left" onclick="changeDirection('LEFT')">←</button>
-            <button class="arrow-btn arrow-down" onclick="changeDirection('DOWN')">↓</button>
-            <button class="arrow-btn arrow-right" onclick="changeDirection('RIGHT')">→</button>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">🎭 SimuVerse AI</div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="app.exportAllData()">
+                📥 ייצוא נתונים
+            </button>
+            <button class="btn btn-primary" onclick="app.showTab('simulations')">
+                ➕ סימולציה חדשה
+            </button>
         </div>
     </div>
 
-    <div class="game-over" id="gameOver">
-        <h2>המשחק נגמר!</h2>
-        <p style="font-size: 1.5em; margin-bottom: 20px;">הציון שלך: <span id="finalScore">0</span></p>
-        <button onclick="restartGame()">שחק שוב</button>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="app.showMainTab('overview')">
+                📊 סקירה כללית
+            </button>
+            <button class="tab-btn" onclick="app.showMainTab('simulations')">
+                🎬 סימולציות
+            </button>
+            <button class="tab-btn" onclick="app.showMainTab('spaces')">
+                🔬 מרחבי מחקר
+            </button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="tab-overview" class="tab-content active">
+            <div class="glass" style="padding: 32px;">
+                <h2 style="margin-bottom: 24px; font-size: 28px;">ברוכים הבאים למערכת SimuVerse AI</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 24px;">
+                    פלטפורמה מתקדמת ליצירת סימולציות AI אינטראקטיביות למחקר ולמידה.
+                    המערכת מבוססת על 4 סוכני AI שפועלים במקביל כדי ליצור חווית למידה עשירה ומשוב מעמיק.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 32px;">
+                    <div class="glass" style="padding: 24px; text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 12px;">🎭</div>
+                        <div style="font-size: 32px; font-weight: bold; color: var(--accent-color);" id="stats-simulations">0</div>
+                        <div style="color: var(--text-secondary); margin-top: 8px;">סימולציות פעילות</div>
+                    </div>
+                    <div class="glass" style="padding: 24px; text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 12px;">🔬</div>
+                        <div style="font-size: 32px; font-weight: bold; color: var(--accent-color);" id="stats-spaces">0</div>
+                        <div style="color: var(--text-secondary); margin-top: 8px;">מרחבי מחקר</div>
+                    </div>
+                    <div class="glass" style="padding: 24px; text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 12px;">👥</div>
+                        <div style="font-size: 32px; font-weight: bold; color: var(--accent-color);" id="stats-sessions">0</div>
+                        <div style="color: var(--text-secondary); margin-top: 8px;">סשנים שהתבצעו</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulations Tab -->
+        <div id="tab-simulations" class="tab-content">
+            <button class="btn btn-primary" onclick="app.createNewSimulation()" style="margin-bottom: 24px;">
+                ➕ יצירת סימולציה חדשה
+            </button>
+            <div id="simulations-list" class="simulations-grid"></div>
+        </div>
+
+        <!-- Research Spaces Tab -->
+        <div id="tab-spaces" class="tab-content">
+            <button class="btn btn-primary" onclick="app.createNewSpace()" style="margin-bottom: 24px;">
+                ➕ יצירת מרחב מחקר חדש
+            </button>
+            <div id="spaces-list" class="spaces-grid"></div>
+        </div>
     </div>
 
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const gameOverDiv = document.getElementById('gameOver');
+    <!-- Simulation Editor Modal -->
+    <div id="modal-editor" class="modal-overlay">
+        <div class="modal" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2 class="modal-title">עריכת סימולציה</h2>
+                <button class="modal-close" onclick="app.closeEditor()">×</button>
+            </div>
 
-        // Game settings
-        const gridSize = 20;
-        const tileCount = canvas.width / gridSize;
+            <div class="tabs-nav" style="margin-bottom: 24px;">
+                <button class="tab-btn active" onclick="app.showEditorTab('general')">כללי</button>
+                <button class="tab-btn" onclick="app.showEditorTab('roleplay')">דמות (Roleplay)</button>
+                <button class="tab-btn" onclick="app.showEditorTab('mentor')">מנטור</button>
+                <button class="tab-btn" onclick="app.showEditorTab('reflection')">רפלקציה</button>
+                <button class="tab-btn" onclick="app.showEditorTab('evaluation')">הערכה</button>
+                <button class="tab-btn" onclick="app.showEditorTab('surveys')">שאלונים</button>
+            </div>
 
-        // Game state
-        let snake = [
-            {x: 10, y: 10}
-        ];
-        let velocityX = 0;
-        let velocityY = 0;
-        let foodX = 15;
-        let foodY = 15;
-        let score = 0;
-        let highScore = localStorage.getItem('snakeHighScore') || 0;
-        let gameLoop;
-        let gameRunning = false;
-        let speed = 100;
+            <!-- Editor Tabs -->
+            <div id="editor-tab-general" class="tab-content active">
+                <div class="form-group">
+                    <label class="form-label">שם הסימולציה *</label>
+                    <input type="text" class="form-input" id="sim-name" placeholder="לדוגמה: ראיון עם מטופל מאתגר">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">תיאור</label>
+                    <textarea class="form-textarea" id="sim-description" placeholder="תיאור קצר של מטרת הסימולציה והתרחיש"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">מטרות לימודיות</label>
+                    <textarea class="form-textarea" id="sim-objectives" placeholder="מהן מטרות הלמידה של סימולציה זו?"></textarea>
+                </div>
+            </div>
 
-        // Update high score display
-        document.getElementById('highScore').textContent = highScore;
+            <div id="editor-tab-roleplay" class="tab-content">
+                <div class="form-group">
+                    <label class="form-label">System Prompt - הדמות *</label>
+                    <textarea class="form-textarea" id="roleplay-prompt" style="min-height: 300px;" placeholder='דוגמה: "את רחל, בת 70, סובלת מכאבי גב כרוניים. את חשדנית כלפי רופאים צעירים ומעדיפה טיפולים מסורתיים. דברי בקצרה ובאופן ישיר."'></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">קבצי רקע (PDF/TXT)</label>
+                    <div class="file-upload" id="roleplay-files-drop">
+                        <div class="file-upload-icon">📄</div>
+                        <div>גרור קבצים לכאן או לחץ לבחירה</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
+                            קבצים אלו ישמשו כמקור מידע נוסף לדמות
+                        </div>
+                        <input type="file" id="roleplay-files-input" multiple accept=".pdf,.txt" style="display: none;">
+                    </div>
+                    <div id="roleplay-files-list" style="margin-top: 12px;"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">הגדרות קול (TTS)</label>
+                    <select class="form-select" id="roleplay-voice">
+                        <option value="female">קול נשי</option>
+                        <option value="male">קול גברי</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">סגנון דיבור</label>
+                    <input type="text" class="form-input" id="roleplay-voice-style" placeholder='לדוגמה: "Warm and empathetic" או "Professional and formal"'>
+                </div>
+            </div>
 
-        // Game functions
-        function startGame() {
-            if (gameRunning) return;
+            <div id="editor-tab-mentor" class="tab-content">
+                <div class="form-group">
+                    <label class="form-label">System Prompt - המנטור</label>
+                    <textarea class="form-textarea" id="mentor-prompt" style="min-height: 300px;" placeholder='דוגמה: "אתה מדריך קליני מנוסה. עקוב אחר השיחה בין הסטודנט למטופל. אם הסטודנט שואל שאלות סגורות בלבד, הער לו בעדינות לנסות שאלות פתוחות. תן טיפים קצרים ומעשיים."'></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <input type="checkbox" id="mentor-enabled" style="margin-left: 8px;">
+                        הפעל מנטור בזמן אמת
+                    </label>
+                </div>
+            </div>
 
-            gameRunning = true;
-            snake = [{x: 10, y: 10}];
-            velocityX = 1;
-            velocityY = 0;
-            score = 0;
-            speed = 100;
-            updateScore();
-            placeFood();
-            gameOverDiv.classList.remove('show');
-            document.getElementById('startBtn').textContent = 'משחק פעיל';
-            document.getElementById('startBtn').disabled = true;
+            <div id="editor-tab-reflection" class="tab-content">
+                <div class="form-group">
+                    <label class="form-label">System Prompt - רפלקציה</label>
+                    <textarea class="form-textarea" id="reflection-prompt" style="min-height: 300px;" placeholder='דוגמה: "קרא את התמליל של השיחה. אל תשפוט עדיין. שאל את המשתמש 3-4 שאלות רפלקטיביות שיעזרו לו להבין את הביצועים שלו. התמקד ברגעי מפתח ובאינטראקציות משמעותיות."'></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <input type="checkbox" id="reflection-enabled" checked style="margin-left: 8px;">
+                        הפעל שלב רפלקציה
+                    </label>
+                </div>
+            </div>
 
-            clearInterval(gameLoop);
-            gameLoop = setInterval(update, speed);
-        }
+            <div id="editor-tab-evaluation" class="tab-content">
+                <div class="form-group">
+                    <label class="form-label">System Prompt - הערכה</label>
+                    <textarea class="form-textarea" id="evaluation-prompt" style="min-height: 200px;" placeholder='דוגמה: "נתח את הביצועים על סמך הקריטריונים שלהלן. החזר JSON בלבד עם ציונים והערות."'></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">קריטריוני הערכה (JSON)</label>
+                    <textarea class="form-textarea" id="evaluation-criteria" style="min-height: 250px; font-family: 'Courier New', monospace;" placeholder='[
+  {
+    "name": "אמפתיה",
+    "weight": 2,
+    "description": "יכולת להבין ולהזדהות עם רגשות המטופל"
+  },
+  {
+    "name": "דיוק קליני",
+    "weight": 1,
+    "description": "דיוק בשאילת שאלות רלוונטיות ואיסוף מידע"
+  }
+]'></textarea>
+                </div>
+            </div>
 
-        function restartGame() {
-            startGame();
-        }
+            <div id="editor-tab-surveys" class="tab-content">
+                <h3 style="margin-bottom: 16px;">שאלון מקדים (Pre-Survey)</h3>
+                <div id="pre-survey-builder"></div>
+                <button class="btn btn-secondary" onclick="app.addSurveyQuestion('pre')" style="margin-top: 12px;">
+                    ➕ הוסף שאלה
+                </button>
 
-        function update() {
-            // Move snake
-            const head = {x: snake[0].x + velocityX, y: snake[0].y + velocityY};
+                <h3 style="margin: 32px 0 16px;">שאלון סיכום (Post-Survey)</h3>
+                <div id="post-survey-builder"></div>
+                <button class="btn btn-secondary" onclick="app.addSurveyQuestion('post')" style="margin-top: 12px;">
+                    ➕ הוסף שאלה
+                </button>
+            </div>
 
-            // Check wall collision
-            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
-                gameOver();
-                return;
-            }
+            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--glass-border);">
+                <button class="btn btn-secondary" onclick="app.closeEditor()">ביטול</button>
+                <button class="btn btn-danger" onclick="app.deleteCurrentSimulation()" id="btn-delete-sim">מחק סימולציה</button>
+                <button class="btn btn-primary" onclick="app.saveSimulation()">💾 שמור</button>
+            </div>
+        </div>
+    </div>
 
-            // Check self collision
-            for (let i = 0; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    gameOver();
-                    return;
-                }
-            }
+    <!-- Action Bar -->
+    <div class="action-bar">
+        <div class="action-bar-status">
+            <span id="autosave-status">✓ נשמר אוטומטית</span>
+        </div>
+        <div>
+            <button class="btn btn-secondary" onclick="app.showHelp()">
+                ❓ עזרה
+            </button>
+        </div>
+    </div>
 
-            snake.unshift(head);
-
-            // Check food collision
-            if (head.x === foodX && head.y === foodY) {
-                score += 10;
-                updateScore();
-                placeFood();
-
-                // Increase speed slightly
-                if (score % 50 === 0 && speed > 50) {
-                    speed -= 5;
-                    clearInterval(gameLoop);
-                    gameLoop = setInterval(update, speed);
-                }
-            } else {
-                snake.pop();
-            }
-
-            draw();
-        }
-
-        function draw() {
-            // Clear canvas
-            ctx.fillStyle = '#1a1a2e';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw grid
-            ctx.strokeStyle = '#2a2a3e';
-            ctx.lineWidth = 1;
-            for (let i = 0; i <= tileCount; i++) {
-                ctx.beginPath();
-                ctx.moveTo(i * gridSize, 0);
-                ctx.lineTo(i * gridSize, canvas.height);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.moveTo(0, i * gridSize);
-                ctx.lineTo(canvas.width, i * gridSize);
-                ctx.stroke();
-            }
-
-            // Draw snake
-            snake.forEach((segment, index) => {
-                if (index === 0) {
-                    // Head
-                    ctx.fillStyle = '#4ecca3';
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = '#4ecca3';
-                } else {
-                    // Body
-                    ctx.fillStyle = '#45b393';
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = '#45b393';
-                }
-
-                ctx.fillRect(
-                    segment.x * gridSize + 2,
-                    segment.y * gridSize + 2,
-                    gridSize - 4,
-                    gridSize - 4
-                );
-
-                // Draw eyes on head
-                if (index === 0) {
-                    ctx.fillStyle = 'white';
-                    ctx.shadowBlur = 0;
-                    const eyeSize = 4;
-                    const eyeOffset = 6;
-
-                    if (velocityX === 1) { // Right
-                        ctx.fillRect(segment.x * gridSize + gridSize - eyeOffset, segment.y * gridSize + 5, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - eyeOffset, segment.y * gridSize + gridSize - 9, eyeSize, eyeSize);
-                    } else if (velocityX === -1) { // Left
-                        ctx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + 5, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + gridSize - 9, eyeSize, eyeSize);
-                    } else if (velocityY === -1) { // Up
-                        ctx.fillRect(segment.x * gridSize + 5, segment.y * gridSize + 2, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - 9, segment.y * gridSize + 2, eyeSize, eyeSize);
-                    } else if (velocityY === 1) { // Down
-                        ctx.fillRect(segment.x * gridSize + 5, segment.y * gridSize + gridSize - eyeOffset, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - 9, segment.y * gridSize + gridSize - eyeOffset, eyeSize, eyeSize);
-                    }
-                }
-            });
-
-            ctx.shadowBlur = 0;
-
-            // Draw food
-            ctx.fillStyle = '#ff6b6b';
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = '#ff6b6b';
-            ctx.beginPath();
-            ctx.arc(
-                foodX * gridSize + gridSize / 2,
-                foodY * gridSize + gridSize / 2,
-                gridSize / 2 - 2,
-                0,
-                Math.PI * 2
-            );
-            ctx.fill();
-
-            // Draw stem
-            ctx.strokeStyle = '#51cf66';
-            ctx.lineWidth = 2;
-            ctx.shadowBlur = 0;
-            ctx.beginPath();
-            ctx.moveTo(foodX * gridSize + gridSize / 2, foodY * gridSize + 3);
-            ctx.lineTo(foodX * gridSize + gridSize / 2 + 3, foodY * gridSize);
-            ctx.stroke();
-        }
-
-        function placeFood() {
-            let validPosition = false;
-
-            while (!validPosition) {
-                foodX = Math.floor(Math.random() * tileCount);
-                foodY = Math.floor(Math.random() * tileCount);
-
-                validPosition = true;
-                for (let segment of snake) {
-                    if (segment.x === foodX && segment.y === foodY) {
-                        validPosition = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        function updateScore() {
-            document.getElementById('currentScore').textContent = score;
-
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem('snakeHighScore', highScore);
-                document.getElementById('highScore').textContent = highScore;
-            }
-        }
-
-        function gameOver() {
-            gameRunning = false;
-            clearInterval(gameLoop);
-            document.getElementById('finalScore').textContent = score;
-            gameOverDiv.classList.add('show');
-            document.getElementById('startBtn').textContent = 'התחל משחק';
-            document.getElementById('startBtn').disabled = false;
-        }
-
-        function changeDirection(direction) {
-            if (!gameRunning) return;
-
-            switch(direction) {
-                case 'UP':
-                    if (velocityY !== 1) {
-                        velocityX = 0;
-                        velocityY = -1;
-                    }
-                    break;
-                case 'DOWN':
-                    if (velocityY !== -1) {
-                        velocityX = 0;
-                        velocityY = 1;
-                    }
-                    break;
-                case 'LEFT':
-                    if (velocityX !== 1) {
-                        velocityX = -1;
-                        velocityY = 0;
-                    }
-                    break;
-                case 'RIGHT':
-                    if (velocityX !== -1) {
-                        velocityX = 1;
-                        velocityY = 0;
-                    }
-                    break;
-            }
-        }
-
-        // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            if (!gameRunning) {
-                if (e.key === ' ' || e.key === 'Enter') {
-                    startGame();
-                }
-                return;
-            }
-
-            switch(e.key) {
-                case 'ArrowUp':
-                case 'w':
-                case 'W':
-                    e.preventDefault();
-                    changeDirection('UP');
-                    break;
-                case 'ArrowDown':
-                case 's':
-                case 'S':
-                    e.preventDefault();
-                    changeDirection('DOWN');
-                    break;
-                case 'ArrowLeft':
-                case 'a':
-                case 'A':
-                    e.preventDefault();
-                    changeDirection('LEFT');
-                    break;
-                case 'ArrowRight':
-                case 'd':
-                case 'D':
-                    e.preventDefault();
-                    changeDirection('RIGHT');
-                    break;
-            }
-        });
-
-        // Initial draw
-        draw();
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
