@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimuVerse AI - מדריך הפעלה</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { font-size: 48px; margin-bottom: 20px; }
+        .big-button {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 20px;
+            background: #4ecca3;
+            color: #0f0f1e;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .big-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .info {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 SimuVerse AI</h1>
+        <h2>ברוך הבא למערכת!</h2>
+        
+        <div class="info">
+            <h3>📡 השרת רץ בהצלחה!</h3>
+            <p>כדי להתחיל, לחץ על אחד הכפתורים:</p>
+        </div>
+
+        <a href="index.html" class="big-button">
+            🎛️ Admin Dashboard<br>
+            <small style="font-size: 14px;">ניהול סימולציות</small>
+        </a>
+
+        <a href="runner.html" class="big-button">
+            🎭 Simulation Runner<br>
+            <small style="font-size: 14px;">הרצת סימולציה</small>
+        </a>
+
+        <div class="info" style="margin-top: 40px;">
+            <h3>🔑 צריך Gemini API Key?</h3>
+            <p>לפני שתתחיל, השג מפתח חינם מ:</p>
+            <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: #4ecca3; font-size: 18px;">
+                https://makersuite.google.com/app/apikey
+            </a>
+        </div>
+
+        <div class="info">
+            <h3>📖 מדריך מהיר</h3>
+            <ol style="text-align: right; max-width: 600px; margin: 20px auto;">
+                <li>פתח את <strong>Admin Dashboard</strong></li>
+                <li>לחץ "➕ יצירת סימולציה חדשה"</li>
+                <li>מלא את הפרטים ושמור</li>
+                <li>עבור ל"מרחבי מחקר" → צור מרחב חדש</li>
+                <li>העתק את הלינק ושתף!</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <p><strong>נתקעת? יש בעיה?</strong></p>
+            <p>קרא את <code>README.md</code> לפרטים מלאים</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-detect if running locally
+        if (window.location.protocol === 'file:') {
+            document.body.innerHTML += '<div style="background: #ff6b6b; padding: 20px; margin-top: 20px; border-radius: 10px;"><h3>⚠️ שים לב!</h3><p>אתה פותח את הקובץ ישירות מהדיסק.<br>צריך להריץ דרך שרת HTTP.<br><br>פתח טרמינל והרץ:<br><code style="display:block; margin:10px 0; padding:10px; background:rgba(0,0,0,0.3);">python3 -m http.server 8080</code><br>ואז פתח: <code>http://localhost:8080/OPEN_ME.html</code></p></div>';
+        }
+    </script>
+</body>
+</html>

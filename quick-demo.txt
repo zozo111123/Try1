@@ -1,0 +1,36 @@
+=================================================
+   🎭 SimuVerse AI - Quick Demo
+=================================================
+
+השרת רץ בהצלחה! ✅
+
+📍 קישורים זמינים:
+-------------------
+🏠 דף פתיחה:      http://localhost:8080/OPEN_ME.html
+🎛️ Admin Dashboard: http://localhost:8080/index.html
+🎭 Run Simulation:  http://localhost:8080/runner.html
+
+📖 מדריך מהיר:
+-------------------
+1. פתח Admin Dashboard
+2. לחץ "יצירת סימולציה חדשה"
+3. מלא System Prompt לדמות (לדוגמה):
+   
+   "את שרה, בת 50, מגיעה עם כאבי בטן.
+    דברי בקצרה ובפשטות."
+
+4. שמור → עבור ל"מרחבי מחקר" → צור מרחב
+5. העתק את הלינק ושתף!
+
+🔑 צריך API Key?
+-------------------
+קבל חינם מ: https://makersuite.google.com/app/apikey
+
+📂 קבצים בפרויקט:
+-------------------
+OPEN_ME.html               4.0K
+README.md                   15K
+app.js                      27K
+index.html                  24K
+runner.html                 23K
+runner.js                   30K
