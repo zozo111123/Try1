@@ -3,482 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחק הנחש - Snake Game</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: white;
-        }
-
-        .game-container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        #gameCanvas {
-            border: 3px solid white;
-            border-radius: 10px;
-            background-color: #1a1a2e;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            display: block;
-            margin: 0 auto;
-        }
-
-        .score-board {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .score-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.2em;
-        }
-
-        .score-value {
-            font-size: 1.5em;
-            font-weight: bold;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .controls {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-
-        .controls h3 {
-            margin-bottom: 10px;
-        }
-
-        .controls p {
-            margin: 5px 0;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        .game-over {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            display: none;
-            z-index: 1000;
-        }
-
-        .game-over.show {
-            display: block;
-        }
-
-        .game-over h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #f5576c;
-        }
-
-        .mobile-controls {
-            display: none;
-            margin-top: 20px;
-            grid-template-columns: repeat(3, 80px);
-            grid-template-rows: repeat(3, 80px);
-            gap: 10px;
-            justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-controls {
-                display: grid;
-            }
-        }
-
-        .arrow-btn {
-            width: 80px;
-            height: 80px;
-            font-size: 2em;
-            padding: 0;
-            margin: 0;
-        }
-
-        .arrow-up { grid-column: 2; grid-row: 1; }
-        .arrow-left { grid-column: 1; grid-row: 2; }
-        .arrow-down { grid-column: 2; grid-row: 2; }
-        .arrow-right { grid-column: 3; grid-row: 2; }
-    </style>
+    <title>פרופ' זוהר אליוסף | Zohar Elyoseph</title>
+    <meta name="description" content="פרופ' זוהר אליוסף - חוקר בינה מלאכותית ופסיכולוגיה, אוניברסיטת חיפה">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>🐍 משחק הנחש 🐍</h1>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-text">Prof. Zohar Elyoseph</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">ראשי</a></li>
+                <li><a href="#about" class="nav-link">אודות</a></li>
+                <li><a href="#research" class="nav-link">תחומי מחקר</a></li>
+                <li><a href="#publications" class="nav-link">פרסומים</a></li>
+                <li><a href="#media" class="nav-link">מדיה והרצאות</a></li>
+                <li><a href="#contact" class="nav-link">יצירת קשר</a></li>
+                <li><button class="edit-toggle-btn" id="editModeBtn" title="מצב עריכה"><i class="fas fa-pen"></i></button></li>
+            </ul>
+        </div>
+    </nav>
 
-        <canvas id="gameCanvas" width="600" height="600"></canvas>
-
-        <div class="score-board">
-            <div class="score-item">
-                <span>ציון נוכחי</span>
-                <span class="score-value" id="currentScore">0</span>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-image-wrapper">
+                <div class="hero-image">
+                    <img src="https://cris.haifa.ac.il/ws/portalfiles/portal/75092498/zohar.jpg"
+                         alt="פרופ' זוהר אליוסף"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23c9a96e%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2260%22 font-family=%22serif%22%3EZE%3C/text%3E%3C/svg%3E'">
+                </div>
             </div>
-            <div class="score-item">
-                <span>שיא</span>
-                <span class="score-value" id="highScore">0</span>
+            <div class="hero-text">
+                <p class="hero-subtitle">אוניברסיטת חיפה | הפקולטה לחינוך</p>
+                <h1 class="hero-title" contenteditable="false">פרופ' זוהר אליוסף</h1>
+                <p class="hero-name-en">Prof. Zohar Elyoseph, PhD</p>
+                <p class="hero-tagline" contenteditable="false">חוקר בינה מלאכותית ופסיכולוגיה | פסיכולוג חינוכי מומחה</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="69">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">פרסומים אקדמיים</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1288">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">ציטוטים</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="947">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">חוקרים מצטטים</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#publications" class="btn btn-primary">פרסומים אקדמיים</a>
+                    <a href="#contact" class="btn btn-outline">יצירת קשר</a>
+                </div>
             </div>
         </div>
-
-        <div class="controls">
-            <h3>הוראות משחק:</h3>
-            <p>🎮 השתמש בחיצים במקלדת כדי לשלוט בנחש</p>
-            <p>🍎 אסוף תפוחים כדי לצבור נקודות</p>
-            <p>⚠️ אל תפגע בקירות או בעצמך!</p>
-            <button id="startBtn" onclick="startGame()">התחל משחק</button>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
         </div>
+    </section>
 
-        <div class="mobile-controls">
-            <button class="arrow-btn arrow-up" onclick="changeDirection('UP')">↑</button>
-            <button class="arrow-btn arrow-left" onclick="changeDirection('LEFT')">←</button>
-            <button class="arrow-btn arrow-down" onclick="changeDirection('DOWN')">↓</button>
-            <button class="arrow-btn arrow-right" onclick="changeDirection('RIGHT')">→</button>
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">אודות</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-text" contenteditable="false">
+                        <p class="lead-text">פרופ' זוהר אליוסף הוא <strong>פסיכולוג חינוכי מומחה</strong> וחוקר מוביל בתחום הממשק בין <strong>בינה מלאכותית לפסיכולוגיה</strong>. מחקריו חלוציים חוקרים את היכולות והמגבלות של מודלי שפה גדולים (LLMs) בתחום בריאות הנפש.</p>
+
+                        <p>פרופ' אליוסף משמש כ<strong>פרופסור חבר (Associate Professor)</strong> בבית הספר לטיפול, ייעוץ והתפתחות האדם, <strong>הפקולטה לחינוך, אוניברסיטת חיפה</strong>. הוא מכהן כראש המרכז למחקר פסיכוביולוגי ומרצה בכיר בתוכנית התואר השני לפסיכולוגיה חינוכית במכללה האקדמית עמק יזרעאל (מקס שטרן).</p>
+
+                        <p>בנוסף, הוא משמש כ<strong>עמית מחקר</strong> בפקולטה לרפואה, המחלקה למדעי המוח, <strong>אימפריאל קולג' לונדון</strong>, וכחוקר ביחידת הבינה המלאכותית במכון ל-AI יישומי, אגף המו"פ של <strong>משרד החינוך הישראלי</strong>.</p>
+
+                        <p>ד"ר אליוסף סיים את לימודי התואר הראשון בפסיכולוגיה <strong>באוניברסיטה הפתוחה</strong>, והשלים את התואר השני והדוקטורט בפסיכוביולוגיה ונוירופסיכולוגיה ב<strong>אוניברסיטת תל אביב</strong>.</p>
+                    </div>
+
+                    <div class="affiliations">
+                        <h3>שיוכים אקדמיים</h3>
+                        <div class="affiliation-cards">
+                            <div class="affiliation-card">
+                                <div class="affiliation-icon"><i class="fas fa-university"></i></div>
+                                <div class="affiliation-info">
+                                    <h4>אוניברסיטת חיפה</h4>
+                                    <p>פרופסור חבר, הפקולטה לחינוך</p>
+                                    <p>בית הספר לטיפול, ייעוץ והתפתחות האדם</p>
+                                </div>
+                            </div>
+                            <div class="affiliation-card">
+                                <div class="affiliation-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="affiliation-info">
+                                    <h4>המכללה האקדמית עמק יזרעאל</h4>
+                                    <p>ראש המרכז למחקר פסיכוביולוגי</p>
+                                    <p>מרצה בכיר - פסיכולוגיה חינוכית</p>
+                                </div>
+                            </div>
+                            <div class="affiliation-card">
+                                <div class="affiliation-icon"><i class="fas fa-flask"></i></div>
+                                <div class="affiliation-info">
+                                    <h4>אימפריאל קולג' לונדון</h4>
+                                    <p>עמית מחקר</p>
+                                    <p>הפקולטה לרפואה, מחלקת מדעי המוח</p>
+                                </div>
+                            </div>
+                            <div class="affiliation-card">
+                                <div class="affiliation-icon"><i class="fas fa-building-columns"></i></div>
+                                <div class="affiliation-info">
+                                    <h4>משרד החינוך</h4>
+                                    <p>חוקר - יחידת הבינה המלאכותית</p>
+                                    <p>המכון ל-AI יישומי, אגף מו"פ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="section research-section" id="research">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">תחומי מחקר</h2>
+                <div class="title-decoration"></div>
+                <p class="section-subtitle">מחקר חלוצי בממשק בין בינה מלאכותית, פסיכולוגיה ובריאות הנפש</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-brain"></i></div>
+                    <h3>בינה מלאכותית ובריאות הנפש</h3>
+                    <p>חקירת יכולותיהם ומגבלותיהם של מודלי שפה גדולים (ChatGPT, Claude, Gemini) בהערכת סיכון אובדני, זיהוי רגשות, ותמיכה פסיכולוגית. מחקריו הראו כי AI מסוגל לזהות רגשות ברמה גבוהה מהאדם הממוצע.</p>
+                    <div class="research-tags">
+                        <span class="tag">LLMs</span>
+                        <span class="tag">ChatGPT</span>
+                        <span class="tag">הערכת סיכון</span>
+                        <span class="tag">בריאות הנפש</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-heart-pulse"></i></div>
+                    <h3>מודעות רגשית וזיהוי רגשות</h3>
+                    <p>מחקר מעמיק על יכולת מערכות AI לזהות ולהבין רגשות אנושיים באמצעות טקסט, וידאו ותמונות. הוכחה כי ChatGPT עולה על הביצועים הממוצעים של בני אדם בהערכות מודעות רגשית (LEAS).</p>
+                    <div class="research-tags">
+                        <span class="tag">מודעות רגשית</span>
+                        <span class="tag">LEAS</span>
+                        <span class="tag">Theory of Mind</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>חוסן פסיכולוגי בילדים</h3>
+                    <p>פיתוח התערבויות באמצעות כלי AI ליצירת מרחבים משחקיים המקדמים חוסן פסיכולוגי בילדים, בשיטת "הסיפור בשישה חלקים", שפותחו בין היתר בעקבות אירועי 7 באוקטובר 2023.</p>
+                    <div class="research-tags">
+                        <span class="tag">חוסן</span>
+                        <span class="tag">ילדים ונוער</span>
+                        <span class="tag">משחק טיפולי</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-users"></i></div>
+                    <h3>מנטליזציה ותהליכים קוגניטיביים</h3>
+                    <p>מחקר על יכולת ה-AI להבין מצבים מנטליים של אחרים (mindreading), כולל רגשות, אמונות וכוונות. בחינת היכולת הקוגניטיבית-חברתית של AI באמצעות גירויים דינמיים שמיעתיים-חזותיים.</p>
+                    <div class="research-tags">
+                        <span class="tag">מנטליזציה</span>
+                        <span class="tag">Mindreading</span>
+                        <span class="tag">נוירופסיכולוגיה</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-scale-balanced"></i></div>
+                    <h3>אתיקה של AI בבריאות הנפש</h3>
+                    <p>בחינת ההיבטים האתיים של דמוקרטיזציה של בריאות הנפש באמצעות AI גנרטיבי. "השלישי המלאכותי" - מסגרת אתית לשילוב AI בטיפול פסיכולוגי תוך שמירה על הקשר האנושי.</p>
+                    <div class="research-tags">
+                        <span class="tag">אתיקה</span>
+                        <span class="tag">דמוקרטיזציה</span>
+                        <span class="tag">השלישי המלאכותי</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-child"></i></div>
+                    <h3>ADHD, מוגבלויות קוגניטיביות וחינוך</h3>
+                    <p>מחקר על הפוטנציאל הרב-ממדי של AI גנרטיבי עבור אנשים עם מוגבלויות קוגניטיביות, כולל בחינת דפוסי ייחוס של AI כלפי תלמידים עם ובלי לקויות למידה, ומחקר על ADHD כהפרעה נוירו-קוגניטיבית.</p>
+                    <div class="research-tags">
+                        <span class="tag">ADHD</span>
+                        <span class="tag">לקויות למידה</span>
+                        <span class="tag">הכלה</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="section publications-section" id="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">פרסומים אקדמיים נבחרים</h2>
+                <div class="title-decoration"></div>
+                <p class="section-subtitle">מחקרים פורצי דרך בכתבי עת מובילים</p>
+            </div>
+
+            <div class="pub-filters">
+                <button class="pub-filter active" data-filter="all">הכל</button>
+                <button class="pub-filter" data-filter="ai-mental">AI ובריאות הנפש</button>
+                <button class="pub-filter" data-filter="emotion">זיהוי רגשות</button>
+                <button class="pub-filter" data-filter="ethics">אתיקה</button>
+                <button class="pub-filter" data-filter="trauma">טראומה ומשבר</button>
+            </div>
+
+            <div class="publications-list">
+                <!-- Publication 1 -->
+                <article class="pub-card" data-category="emotion" id="pub-chatgpt-emotion">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">ChatGPT Outperforms Humans in Emotional Awareness Evaluations</h3>
+                        <p class="pub-authors">Elyoseph, Z., Hadar-Shoval, D., Asraf, K., & Lvovsky, M.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Psychology, 14, Article 1199058</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר פורץ דרך שהשתמש בסולם רמות המודעות הרגשית (LEAS) לניתוח תגובות ChatGPT לעשרים תרחישים. בבדיקה הראשונה, ChatGPT הדגים ביצועים גבוהים משמעותית מהאוכלוסייה הכללית (Z = 2.84). בבדיקה השנייה, חודש לאחר מכן, הביצועים השתפרו עוד יותר והגיעו כמעט לציון המקסימלי (Z = 4.26), עם רמת דיוק של 9.7/10.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1199058/full" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10254409/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PMC</a>
+                        </div>
+                        <div class="pub-metrics">
+                            <span class="metric"><i class="fas fa-quote-right"></i> מצוטט רבות</span>
+                            <span class="metric"><i class="fas fa-star"></i> מחקר פורץ דרך</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 2 -->
+                <article class="pub-card" data-category="ai-mental" id="pub-suicide-risk">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Beyond Human Expertise: The Promise and Limitations of ChatGPT in Suicide Risk Assessment</h3>
+                        <p class="pub-authors">Elyoseph, Z. & Levkovich, I.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Psychiatry, 14, Article 1213141</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר חלוצי שבחן את יכולתו של ChatGPT להעריך סיכון אובדני. הממצאים הראו כי ChatGPT דירג את הסיכון לניסיון אובדנות נמוך יותר מאנשי מקצוע בבריאות הנפש בכל התנאים, ודירג חוסן נפשי נמוך מהנורמות ברוב התנאים. המשמעות: מי שנשען על ChatGPT להערכת סיכון אובדני עלול לקבל הערכה לא מדויקת.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/37593450/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PubMed</a>
+                        </div>
+                        <div class="pub-metrics">
+                            <span class="metric"><i class="fas fa-quote-right"></i> מצוטט רבות</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 3 -->
+                <article class="pub-card" data-category="ai-mental" id="pub-suicide-gpt4">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Suicide Risk Assessments Through the Eyes of ChatGPT-3.5 Versus ChatGPT-4: Vignette Study</h3>
+                        <p class="pub-authors">Levkovich, I. & Elyoseph, Z.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> JMIR Mental Health, 2023(1), e51232</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר השוואתי בין GPT-3.5 ל-GPT-4 בהערכת סיכון אובדני. הממצאים הראו כי הערכת הסיכון של GPT-4 הייתה דומה לזו של אנשי מקצוע בבריאות הנפש, בעוד ש-GPT-3.5 סיפק הערכות נמוכות משמעותית של סיכון לניסיון אובדנות. המחקר מדגיש את ההתקדמות המשמעותית בין גרסאות המודלים.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://mental.jmir.org/2023/1/e51232" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10551796/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PMC</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 4 -->
+                <article class="pub-card" data-category="ethics" id="pub-artificial-third">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">The Artificial Third: Utilizing ChatGPT in Mental Health</h3>
+                        <p class="pub-authors">Tal, A., Elyoseph, Z., Haber, Y., Angert, T., Gur, T., Simon, T., & Asman, O.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> American Journal of Bioethics, 23(10), 74-77</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מאמר מכונן שמציג את הרעיון של "השלישי המלאכותי" - מסגרת אתית וקלינית לשילוב בינה מלאכותית גנרטיבית בטיפול פסיכולוגי. המאמר מציע ש-AI יכול לשמש כ"צד שלישי" בתהליך הטיפולי, תוך שמירה על הקשר האנושי כמרכיב הקריטי ביותר.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://www.tandfonline.com/doi/full/10.1080/15265161.2023.2250297" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                        </div>
+                        <div class="pub-metrics">
+                            <span class="metric"><i class="fas fa-lightbulb"></i> מאמר מכונן</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 5 -->
+                <article class="pub-card" data-category="ethics" id="pub-democratization">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">An Ethical Perspective on the Democratization of Mental Health with Generative AI</h3>
+                        <p class="pub-authors">Elyoseph, Z. et al.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> JMIR Mental Health</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מאמר הבוחן את ההיבטים האתיים של דמוקרטיזציה של שירותי בריאות הנפש באמצעות בינה מלאכותית גנרטיבית. המחקר מנתח כיצד AI יכול להרחיב נגישות לשירותי בריאות הנפש, במיוחד לאור המחסור העולמי במטפלים, תוך בחינת הסיכונים האתיים הכרוכים בכך.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/39417792/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PubMed</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 6 -->
+                <article class="pub-card" data-category="ai-mental" id="pub-anxiety">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Large Language Models Outperform General Practitioners in Identifying Complex Cases of Childhood Anxiety</h3>
+                        <p class="pub-authors">Levkovich, I., Rabin, E., Brann, M. & Elyoseph, Z.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Digital Health</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר שבחן מודלי שפה גדולים (ChatGPT-3.5, ChatGPT-4, Claude, Gemini) באבחון הפרעות חרדה בילדים בהשוואה לרופאים כלליים. הממצאים הראו כי מודלי ה-AI עלו על הרופאים הכלליים בזיהוי מקרים מורכבים של חרדה בילדות.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://journals.sagepub.com/doi/10.1177/20552076241294182" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 7 -->
+                <article class="pub-card" data-category="trauma" id="pub-oct7">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Mental Health Volunteers After the Oct 7 Gaza Border Crisis in Israel: Silent Warriors</h3>
+                        <p class="pub-authors">Elyoseph, Z., Hadar-Shoval, D., Angert, T., Yitshaki, N., Hol, E., Asman, O. & Levkovich, I.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> The Lancet Psychiatry, 11(1), 10-12</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מאמר ב-Lancet Psychiatry העוסק במתנדבי בריאות הנפש בעקבות משבר 7 באוקטובר. המאמר מתאר את "הלוחמים השקטים" - אנשי המקצוע והמתנדבים שהוקפצו לתמוך נפשית באוכלוסיות שנפגעו, ואת האתגרים הייחודיים שהם התמודדו עמם.</p>
+                        </div>
+                        <div class="pub-metrics">
+                            <span class="metric"><i class="fas fa-fire"></i> The Lancet Psychiatry</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 8 -->
+                <article class="pub-card" data-category="trauma" id="pub-captivity">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Coping Strategies During Captivity: A Qualitative Study on Released Civilian Abductees in Gaza</h3>
+                        <p class="pub-authors">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> BMC Psychology</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר איכותני חלוצי שבחן את אסטרטגיות ההתמודדות של חטופים אזרחיים שהשתחררו משבי בעזה. המחקר מספק תובנות חשובות על מנגנוני ההתמודדות של אנשים במצבי שבי קיצוניים ותורם להבנה של טיפול פוסט-טראומטי בשחרורם.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://link.springer.com/article/10.1186/s40359-025-03183-0" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 9 -->
+                <article class="pub-card" data-category="trauma" id="pub-hell">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">"Every Day is like Hell": Civilian Abductees Released from Captivity in Gaza</h3>
+                        <p class="pub-authors">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Journal of Loss and Trauma</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר מעמיק על חוויותיהם של חטופים אזרחיים ששוחררו מעזה. המחקר מתעד את העוצמה הטראומטית של השבי ואת אתגרי ההתמודדות בשחרור, תוך ניתוח נרטיבים אישיים שמאירים את המורכבות של טראומת השבי.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://www.tandfonline.com/doi/abs/10.1080/15325024.2024.2400122" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 10 -->
+                <article class="pub-card" data-category="ai-mental" id="pub-learning-disabilities">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Attributional Patterns Toward Students With and Without Learning Disabilities</h3>
+                        <p class="pub-authors">Levkovich, I., Rabin, E., Farraj, R. H. & Elyoseph, Z.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Research in Developmental Disabilities, 160, 104970</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר שבחן דפוסי ייחוס של מודלי AI (ChatGPT-3.5, ChatGPT-4, Claude, Gemini) לעומת סטודנטים להוראה, בנוגע למשוב, תסכול, אמפתיה וציפיות כלפי תלמידים עם ובלי לקויות למידה. הממצאים מספקים תובנות חשובות על הטיות פוטנציאליות של AI בהקשר חינוכי.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://cris.haifa.ac.il/en/publications/" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> University of Haifa</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 11 -->
+                <article class="pub-card" data-category="emotion" id="pub-mindreading">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">The Next Frontier in Mindreading? Assessing Generative AI's Social-Cognitive Capabilities</h3>
+                        <p class="pub-authors">Elyoseph, Z. et al.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Digital Health</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר שבחן את יכולות ה-AI בקריאת מחשבות חברתית (mindreading) באמצעות גירויים דינמיים שמיעתיים-חזותיים. הממצאים הראו כי AI גנרטיבי עולה על הביצוע הממוצע של בני אדם בהערכות סטנדרטיות של קריאת מחשבות.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 12 -->
+                <article class="pub-card" data-category="emotion" id="pub-emotion-recognition">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Generative AI Demonstrates Excellent Emotion Recognition Abilities Across Ethnical Boundaries</h3>
+                        <p class="pub-authors">Refoua, E., Meinlschmidt, G. & Elyoseph, Z.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> SSRN Preprint</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מחקר שבדק את יכולות זיהוי הרגשות של AI גנרטיבי חוצה גבולות אתניים. הממצאים מראים כי מודלי AI מפגינים יכולות מצוינות בזיהוי רגשות ללא הטיות אתניות משמעותיות, מה שמעיד על פוטנציאל לשימושים קליניים גלובליים.</p>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4901183" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> SSRN</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 13 -->
+                <article class="pub-card" data-category="ai-mental" id="pub-nature">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">AI Social-Cognitive Capabilities</h3>
+                        <p class="pub-authors">Choudhury, M., Elyoseph, Z., Fast, N. J., Ong, D. C., Nsoesie, E. O. & Pavlick, E.</p>
+                        <p class="pub-journal"><i class="fas fa-book"></i> Nature Reviews Psychology, 4(2), 75-80</p>
+                        <div class="pub-summary-he">
+                            <h4>תקציר בעברית</h4>
+                            <p>מאמר ב-Nature Reviews Psychology הבוחן את היכולות הקוגניטיביות-חברתיות של בינה מלאכותית. הפרסום בכתב עת יוקרתי זה מעיד על ההכרה הבינלאומית במחקרו של פרופ' אליוסף.</p>
+                        </div>
+                        <div class="pub-metrics">
+                            <span class="metric"><i class="fas fa-fire"></i> Nature Reviews Psychology</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pub-more">
+                <p>לרשימה המלאה של הפרסומים:</p>
+                <div class="pub-external-links">
+                    <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-graduation-cap"></i> Google Scholar
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-researchgate"></i> ResearchGate
+                    </a>
+                    <a href="https://orcid.org/0000-0002-5717-4074" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-orcid"></i> ORCID
+                    </a>
+                    <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-university"></i> University of Haifa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media & Lectures Section -->
+    <section class="section media-section" id="media">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">מדיה והרצאות</h2>
+                <div class="title-decoration"></div>
+                <p class="section-subtitle">הרצאות, פודקאסטים, ראיונות וכנסים</p>
+            </div>
+            <div class="media-grid">
+                <!-- Podcast -->
+                <div class="media-card podcast-card">
+                    <div class="media-badge">פודקאסט</div>
+                    <div class="media-icon"><i class="fas fa-podcast"></i></div>
+                    <h3>דיבורי בינה - מעבר למראה הדיגיטלית</h3>
+                    <p>פרק מיוחד על בינה מלאכותית במחוזות הנפש עם פרופ' זוהר אליוסף בפודקאסט של תום הגלעדי. הפרק מתמקד בהשפעה המהפכנית של AI על עולם בריאות הנפש.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-microphone"></i> דיבורי בינה עם תום הגלעדי</span>
+                    </div>
+                    <a href="https://tomhagiladi.podbean.com/e/%D7%A4%D7%A8%D7%A7-10-%D7%9E%D7%A2%D7%91%D7%A8-%D7%9C%D7%9E%D7%A8%D7%90%D7%94%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%AA%D7%A2%D7%9C/" target="_blank" class="media-link">
+                        <i class="fas fa-headphones"></i> האזנה לפרק
+                    </a>
+                </div>
+
+                <!-- LearnTech Podcast -->
+                <div class="media-card podcast-card">
+                    <div class="media-badge">פודקאסט</div>
+                    <div class="media-icon"><i class="fas fa-robot"></i></div>
+                    <h3>האם מכונות יכולות להבין את האדם?</h3>
+                    <p>פרק 130 בפודקאסט LearnTech - שיחה מרתקת על יכולות המכונות להבין רגשות אנושיים, עם דגש על המחקרים שמראים כי AI מסוגל לזהות רגשות ברמה גבוהה.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-microphone"></i> LearnTech - פרק 130</span>
+                    </div>
+                    <a href="https://www.learntech.co.il/podcast/pod130/" target="_blank" class="media-link">
+                        <i class="fas fa-headphones"></i> האזנה לפרק
+                    </a>
+                </div>
+
+                <!-- Interview Israel Hayom -->
+                <div class="media-card interview-card">
+                    <div class="media-badge">ראיון</div>
+                    <div class="media-icon"><i class="fas fa-newspaper"></i></div>
+                    <h3>"יודעת לזהות רגשות טוב יותר מאנשים"</h3>
+                    <p>ראיון בישראל היום על מחקר חלוצי המראה כי בינה מלאכותית מסייעת להכשיר מטפלים בבריאות הנפש ומדגימה יכולות מרשימות בזיהוי רגשות.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-newspaper"></i> ישראל היום</span>
+                    </div>
+                    <a href="https://www.israelhayom.co.il/tech/tech-news/article/16967303" target="_blank" class="media-link">
+                        <i class="fas fa-external-link-alt"></i> קריאת הכתבה
+                    </a>
+                </div>
+
+                <!-- MAKO Interview -->
+                <div class="media-card interview-card">
+                    <div class="media-badge">ראיון</div>
+                    <div class="media-icon"><i class="fas fa-tv"></i></div>
+                    <h3>"הצ'אט GPT הוא כמו חבר אמיתי שמכיר אותי"</h3>
+                    <p>ראיון ב-MAKO על השפעת ChatGPT על ילדים ובני נוער, עם התייחסות לסיכונים ולהזדמנויות שמביאה הטכנולוגיה לעולם החינוך והנפש.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-tv"></i> MAKO</span>
+                    </div>
+                    <a href="https://www.mako.co.il/home-family-kids/Article-8e8276fff93d391027.htm" target="_blank" class="media-link">
+                        <i class="fas fa-external-link-alt"></i> קריאת הכתבה
+                    </a>
+                </div>
+
+                <!-- Conference -->
+                <div class="media-card conference-card">
+                    <div class="media-badge">כנס</div>
+                    <div class="media-icon"><i class="fas fa-users-rectangle"></i></div>
+                    <h3>European Conference of Digital Psychology</h3>
+                    <p>הרצאה על יישומי AI בפסיכולוגיה במסגרת הכנס האירופי לפסיכולוגיה דיגיטלית. מצגת על ממצאי מחקר חדשניים בנושא יכולות קוגניטיביות-חברתיות של AI.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Digital Psychology EU</span>
+                    </div>
+                    <a href="https://digitalpsychology.eu/speakers/elyoseph-zohar/" target="_blank" class="media-link">
+                        <i class="fas fa-external-link-alt"></i> עמוד הדובר
+                    </a>
+                </div>
+
+                <!-- The Artificial Third -->
+                <div class="media-card project-card">
+                    <div class="media-badge">פרויקט</div>
+                    <div class="media-icon"><i class="fas fa-diagram-project"></i></div>
+                    <h3>השלישי המלאכותי - The Artificial Third</h3>
+                    <p>קהילת מחקר ופיתוח בנושא שילוב בינה מלאכותית בתחום בריאות הנפש. פרופ' אליוסף חבר בצוות המחקר הכולל פסיכולוגים וחוקרים מובילים. הקהילה מקיימת הרצאות וכנסים.</p>
+                    <div class="media-meta">
+                        <span><i class="fas fa-globe"></i> artificialthird.com</span>
+                    </div>
+                    <a href="https://www.artificialthird.com/lectures" target="_blank" class="media-link">
+                        <i class="fas fa-external-link-alt"></i> הרצאות הקהילה
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Quotes Section -->
+            <div class="quotes-section">
+                <h3 class="quotes-title">ציטוטים נבחרים</h3>
+                <div class="quotes-carousel">
+                    <div class="quote-card active">
+                        <blockquote>
+                            <i class="fas fa-quote-right quote-icon"></i>
+                            <p>"הבינה המלאכותית עוזרת לאנשי מקצוע להיות יותר מקצועיים ויותר אנושיים."</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-card">
+                        <blockquote>
+                            <i class="fas fa-quote-right quote-icon"></i>
+                            <p>"ישנן ראיות לכך שלבינה מלאכותית קיימות יכולות לזהות רגשות יותר טוב מאנשים, גם במדיום של טקסט, וידאו ותמונה."</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-card">
+                        <blockquote>
+                            <i class="fas fa-quote-right quote-icon"></i>
+                            <p>"בטיפול פסיכולוגי, המרכיב הכי חשוב הוא הקשר האנושי. אין עדיין מספיק מחקרים להבין אם בינה מלאכותית יכולה לנהל את כל רכיבי הטיפול."</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-card">
+                        <blockquote>
+                            <i class="fas fa-quote-right quote-icon"></i>
+                            <p>"הבינה המלאכותית הפכה בפועל לאחד מספקי בריאות הנפש הגדולים בעולם."</p>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="quote-dots" id="quoteDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">יצירת קשר</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-university"></i>
+                        <h3>שיוך אקדמי ראשי</h3>
+                        <p>הפקולטה לחינוך, אוניברסיטת חיפה</p>
+                        <p>בית הספר לטיפול, ייעוץ והתפתחות האדם</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-building"></i>
+                        <h3>שיוך נוסף</h3>
+                        <p>המכללה האקדמית עמק יזרעאל (מקס שטרן)</p>
+                        <p>ראש המרכז למחקר פסיכוביולוגי</p>
+                    </div>
+                    <div class="contact-links">
+                        <h3>פרופילים מקוונים</h3>
+                        <div class="social-links">
+                            <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank" class="social-link" title="Google Scholar">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Google Scholar</span>
+                            </a>
+                            <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank" class="social-link" title="ResearchGate">
+                                <i class="fab fa-researchgate"></i>
+                                <span>ResearchGate</span>
+                            </a>
+                            <a href="https://orcid.org/0000-0002-5717-4074" target="_blank" class="social-link" title="ORCID">
+                                <i class="fab fa-orcid"></i>
+                                <span>ORCID</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/zohar-elyoseph-b94352260/" target="_blank" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank" class="social-link" title="University of Haifa">
+                                <i class="fas fa-university"></i>
+                                <span>University of Haifa</span>
+                            </a>
+                            <a href="https://www.artificialthird.com" target="_blank" class="social-link" title="The Artificial Third">
+                                <i class="fas fa-robot"></i>
+                                <span>The Artificial Third</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p class="footer-name">Prof. Zohar Elyoseph</p>
+                    <p>University of Haifa | Faculty of Education</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank"><i class="fab fa-researchgate"></i></a>
+                    <a href="https://www.linkedin.com/in/zohar-elyoseph-b94352260/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://orcid.org/0000-0002-5717-4074" target="_blank"><i class="fab fa-orcid"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Edit Mode Panel -->
+    <div class="edit-panel" id="editPanel">
+        <div class="edit-panel-header">
+            <h3><i class="fas fa-pen"></i> מצב עריכה</h3>
+            <button class="edit-panel-close" id="editPanelClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="edit-panel-body">
+            <p>לחצו על טקסט כלשהו באתר כדי לערוך אותו.</p>
+            <p>שינויים נשמרים אוטומטית ב-Local Storage של הדפדפן.</p>
+            <div class="edit-actions">
+                <button class="btn btn-primary" id="saveEdits"><i class="fas fa-save"></i> שמירת שינויים</button>
+                <button class="btn btn-outline" id="resetEdits"><i class="fas fa-undo"></i> איפוס שינויים</button>
+                <button class="btn btn-outline" id="exportEdits"><i class="fas fa-download"></i> ייצוא HTML</button>
+            </div>
         </div>
     </div>
 
-    <div class="game-over" id="gameOver">
-        <h2>המשחק נגמר!</h2>
-        <p style="font-size: 1.5em; margin-bottom: 20px;">הציון שלך: <span id="finalScore">0</span></p>
-        <button onclick="restartGame()">שחק שוב</button>
-    </div>
-
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const gameOverDiv = document.getElementById('gameOver');
-
-        // Game settings
-        const gridSize = 20;
-        const tileCount = canvas.width / gridSize;
-
-        // Game state
-        let snake = [
-            {x: 10, y: 10}
-        ];
-        let velocityX = 0;
-        let velocityY = 0;
-        let foodX = 15;
-        let foodY = 15;
-        let score = 0;
-        let highScore = localStorage.getItem('snakeHighScore') || 0;
-        let gameLoop;
-        let gameRunning = false;
-        let speed = 100;
-
-        // Update high score display
-        document.getElementById('highScore').textContent = highScore;
-
-        // Game functions
-        function startGame() {
-            if (gameRunning) return;
-
-            gameRunning = true;
-            snake = [{x: 10, y: 10}];
-            velocityX = 1;
-            velocityY = 0;
-            score = 0;
-            speed = 100;
-            updateScore();
-            placeFood();
-            gameOverDiv.classList.remove('show');
-            document.getElementById('startBtn').textContent = 'משחק פעיל';
-            document.getElementById('startBtn').disabled = true;
-
-            clearInterval(gameLoop);
-            gameLoop = setInterval(update, speed);
-        }
-
-        function restartGame() {
-            startGame();
-        }
-
-        function update() {
-            // Move snake
-            const head = {x: snake[0].x + velocityX, y: snake[0].y + velocityY};
-
-            // Check wall collision
-            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
-                gameOver();
-                return;
-            }
-
-            // Check self collision
-            for (let i = 0; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    gameOver();
-                    return;
-                }
-            }
-
-            snake.unshift(head);
-
-            // Check food collision
-            if (head.x === foodX && head.y === foodY) {
-                score += 10;
-                updateScore();
-                placeFood();
-
-                // Increase speed slightly
-                if (score % 50 === 0 && speed > 50) {
-                    speed -= 5;
-                    clearInterval(gameLoop);
-                    gameLoop = setInterval(update, speed);
-                }
-            } else {
-                snake.pop();
-            }
-
-            draw();
-        }
-
-        function draw() {
-            // Clear canvas
-            ctx.fillStyle = '#1a1a2e';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw grid
-            ctx.strokeStyle = '#2a2a3e';
-            ctx.lineWidth = 1;
-            for (let i = 0; i <= tileCount; i++) {
-                ctx.beginPath();
-                ctx.moveTo(i * gridSize, 0);
-                ctx.lineTo(i * gridSize, canvas.height);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.moveTo(0, i * gridSize);
-                ctx.lineTo(canvas.width, i * gridSize);
-                ctx.stroke();
-            }
-
-            // Draw snake
-            snake.forEach((segment, index) => {
-                if (index === 0) {
-                    // Head
-                    ctx.fillStyle = '#4ecca3';
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = '#4ecca3';
-                } else {
-                    // Body
-                    ctx.fillStyle = '#45b393';
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = '#45b393';
-                }
-
-                ctx.fillRect(
-                    segment.x * gridSize + 2,
-                    segment.y * gridSize + 2,
-                    gridSize - 4,
-                    gridSize - 4
-                );
-
-                // Draw eyes on head
-                if (index === 0) {
-                    ctx.fillStyle = 'white';
-                    ctx.shadowBlur = 0;
-                    const eyeSize = 4;
-                    const eyeOffset = 6;
-
-                    if (velocityX === 1) { // Right
-                        ctx.fillRect(segment.x * gridSize + gridSize - eyeOffset, segment.y * gridSize + 5, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - eyeOffset, segment.y * gridSize + gridSize - 9, eyeSize, eyeSize);
-                    } else if (velocityX === -1) { // Left
-                        ctx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + 5, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + gridSize - 9, eyeSize, eyeSize);
-                    } else if (velocityY === -1) { // Up
-                        ctx.fillRect(segment.x * gridSize + 5, segment.y * gridSize + 2, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - 9, segment.y * gridSize + 2, eyeSize, eyeSize);
-                    } else if (velocityY === 1) { // Down
-                        ctx.fillRect(segment.x * gridSize + 5, segment.y * gridSize + gridSize - eyeOffset, eyeSize, eyeSize);
-                        ctx.fillRect(segment.x * gridSize + gridSize - 9, segment.y * gridSize + gridSize - eyeOffset, eyeSize, eyeSize);
-                    }
-                }
-            });
-
-            ctx.shadowBlur = 0;
-
-            // Draw food
-            ctx.fillStyle = '#ff6b6b';
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = '#ff6b6b';
-            ctx.beginPath();
-            ctx.arc(
-                foodX * gridSize + gridSize / 2,
-                foodY * gridSize + gridSize / 2,
-                gridSize / 2 - 2,
-                0,
-                Math.PI * 2
-            );
-            ctx.fill();
-
-            // Draw stem
-            ctx.strokeStyle = '#51cf66';
-            ctx.lineWidth = 2;
-            ctx.shadowBlur = 0;
-            ctx.beginPath();
-            ctx.moveTo(foodX * gridSize + gridSize / 2, foodY * gridSize + 3);
-            ctx.lineTo(foodX * gridSize + gridSize / 2 + 3, foodY * gridSize);
-            ctx.stroke();
-        }
-
-        function placeFood() {
-            let validPosition = false;
-
-            while (!validPosition) {
-                foodX = Math.floor(Math.random() * tileCount);
-                foodY = Math.floor(Math.random() * tileCount);
-
-                validPosition = true;
-                for (let segment of snake) {
-                    if (segment.x === foodX && segment.y === foodY) {
-                        validPosition = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        function updateScore() {
-            document.getElementById('currentScore').textContent = score;
-
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem('snakeHighScore', highScore);
-                document.getElementById('highScore').textContent = highScore;
-            }
-        }
-
-        function gameOver() {
-            gameRunning = false;
-            clearInterval(gameLoop);
-            document.getElementById('finalScore').textContent = score;
-            gameOverDiv.classList.add('show');
-            document.getElementById('startBtn').textContent = 'התחל משחק';
-            document.getElementById('startBtn').disabled = false;
-        }
-
-        function changeDirection(direction) {
-            if (!gameRunning) return;
-
-            switch(direction) {
-                case 'UP':
-                    if (velocityY !== 1) {
-                        velocityX = 0;
-                        velocityY = -1;
-                    }
-                    break;
-                case 'DOWN':
-                    if (velocityY !== -1) {
-                        velocityX = 0;
-                        velocityY = 1;
-                    }
-                    break;
-                case 'LEFT':
-                    if (velocityX !== 1) {
-                        velocityX = -1;
-                        velocityY = 0;
-                    }
-                    break;
-                case 'RIGHT':
-                    if (velocityX !== -1) {
-                        velocityX = 1;
-                        velocityY = 0;
-                    }
-                    break;
-            }
-        }
-
-        // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            if (!gameRunning) {
-                if (e.key === ' ' || e.key === 'Enter') {
-                    startGame();
-                }
-                return;
-            }
-
-            switch(e.key) {
-                case 'ArrowUp':
-                case 'w':
-                case 'W':
-                    e.preventDefault();
-                    changeDirection('UP');
-                    break;
-                case 'ArrowDown':
-                case 's':
-                case 'S':
-                    e.preventDefault();
-                    changeDirection('DOWN');
-                    break;
-                case 'ArrowLeft':
-                case 'a':
-                case 'A':
-                    e.preventDefault();
-                    changeDirection('LEFT');
-                    break;
-                case 'ArrowRight':
-                case 'd':
-                case 'D':
-                    e.preventDefault();
-                    changeDirection('RIGHT');
-                    break;
-            }
-        });
-
-        // Initial draw
-        draw();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
