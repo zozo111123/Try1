@@ -4,696 +4,656 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>פרופ' זוהר אליוסף | Zohar Elyoseph</title>
-    <meta name="description" content="פרופ' זוהר אליוסף - חוקר בינה מלאכותית ופסיכולוגיה, אוניברסיטת חיפה">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="פרופ' זוהר אליוסף - חוקר בינה מלאכותית ופסיכולוגיה, אוניברסיטת חיפה. מומחה לבניית סוכני AI ובוטים חכמים.">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-text">Prof. Zohar Elyoseph</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <a href="#top" class="nav-logo">Zohar Elyoseph</a>
+            <button class="nav-toggle" id="navToggle" aria-label="תפריט">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#hero" class="nav-link">ראשי</a></li>
-                <li><a href="#about" class="nav-link">אודות</a></li>
-                <li><a href="#research" class="nav-link">תחומי מחקר</a></li>
+                <li><a href="#top" class="nav-link">ראשי</a></li>
+                <li><a href="#biography" class="nav-link">ביוגרפיה</a></li>
+                <li><a href="#research" class="nav-link">מחקר</a></li>
                 <li><a href="#publications" class="nav-link">פרסומים</a></li>
-                <li><a href="#media" class="nav-link">מדיה והרצאות</a></li>
-                <li><a href="#contact" class="nav-link">יצירת קשר</a></li>
-                <li><button class="edit-toggle-btn" id="editModeBtn" title="מצב עריכה"><i class="fas fa-pen"></i></button></li>
+                <li><a href="#media" class="nav-link">מדיה</a></li>
+                <li><a href="#bots" class="nav-link">בוטים ו-AI</a></li>
+                <li><a href="#contact" class="nav-link">קשר</a></li>
+                <li><button class="edit-btn" id="editModeBtn">עריכה</button></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-particles" id="particles"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-image-wrapper">
-                <div class="hero-image">
-                    <img src="https://cris.haifa.ac.il/ws/portalfiles/portal/75092498/zohar.jpg"
-                         alt="פרופ' זוהר אליוסף"
-                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23c9a96e%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2260%22 font-family=%22serif%22%3EZE%3C/text%3E%3C/svg%3E'">
-                </div>
+    <!-- Hero -->
+    <header class="hero" id="top">
+        <div class="hero-inner">
+            <div class="hero-portrait">
+                <img src="https://cris.haifa.ac.il/ws/portalfiles/portal/75092498/zohar.jpg"
+                     alt="פרופ' זוהר אליוסף"
+                     onerror="this.style.display='none'">
             </div>
             <div class="hero-text">
-                <p class="hero-subtitle">אוניברסיטת חיפה | הפקולטה לחינוך</p>
-                <h1 class="hero-title" contenteditable="false">פרופ' זוהר אליוסף</h1>
-                <p class="hero-name-en">Prof. Zohar Elyoseph, PhD</p>
-                <p class="hero-tagline" contenteditable="false">חוקר בינה מלאכותית ופסיכולוגיה | פסיכולוג חינוכי מומחה</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="69">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">פרסומים אקדמיים</span>
+                <p class="hero-label">University of Haifa / Faculty of Education</p>
+                <h1 contenteditable="false">פרופ' זוהר אליוסף</h1>
+                <p class="hero-en">Prof. Zohar Elyoseph, PhD</p>
+                <p class="hero-desc" contenteditable="false">חוקר בינה מלאכותית ופסיכולוגיה קלינית. מומחה לבניית סוכני AI ובוטים חכמים. פסיכולוג חינוכי מומחה.</p>
+                <div class="hero-numbers">
+                    <div class="number-block">
+                        <span class="number" data-target="1288">0</span>
+                        <span class="number-label">ציטוטים</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="1288">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">ציטוטים</span>
+                    <div class="number-block">
+                        <span class="number" data-target="69">0</span>
+                        <span class="number-label">פרסומים</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="947">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">חוקרים מצטטים</span>
+                    <div class="number-block">
+                        <span class="number" data-target="21">0</span>
+                        <span class="number-label">h-index</span>
                     </div>
                 </div>
-                <div class="hero-cta">
-                    <a href="#publications" class="btn btn-primary">פרסומים אקדמיים</a>
-                    <a href="#contact" class="btn btn-outline">יצירת קשר</a>
+                <div class="hero-actions">
+                    <a href="#publications" class="btn-primary">פרסומים אקדמיים</a>
+                    <a href="#contact" class="btn-secondary">יצירת קשר</a>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="mouse-wheel"></div>
+    </header>
+
+    <!-- Biography -->
+    <section class="section" id="biography">
+        <div class="container">
+            <h2 class="section-title">ביוגרפיה</h2>
+            <div class="bio-content" contenteditable="false">
+                <p class="bio-lead">פרופ' זוהר אליוסף הוא אחד החוקרים המובילים בעולם בממשק בין בינה מלאכותית גנרטיבית לבריאות הנפש. מחקריו, שפורסמו בכתבי העת המובילים ביותר בתחום כולל Nature Reviews Psychology ו-The Lancet Psychiatry, שינו את השיח הגלובלי על תפקיד ה-AI בפסיכולוגיה.</p>
+
+                <p>מעבר למחקר האקדמי, פרופ' אליוסף הוא מומחה מעשי בבניית סוכני AI (AI Agents) ובוטים חכמים לתחום בריאות הנפש והחינוך. הוא מתכנן ומפתח מערכות שיח אוטונומיות המבוססות על מודלי שפה גדולים, ומטמיע אותן בסביבות קליניות, חינוכיות וארגוניות. הגישה שלו משלבת ידע עמוק בפסיכולוגיה קלינית עם מומחיות טכנית בתכנון ארכיטקטורות בוטים, עיצוב פרומפטים, ובניית pipelines אוטומטיים.</p>
+            </div>
+
+            <div class="timeline">
+                <h3 class="timeline-title">תחנות מקצועיות</h3>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2011 — 2013</div>
+                    <div class="timeline-body">
+                        <h4>תואר ראשון בפסיכולוגיה</h4>
+                        <p>האוניברסיטה הפתוחה. לימודי יסוד בפסיכולוגיה שהניחו את הבסיס לקריירה אקדמית וקלינית.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2013 — 2016</div>
+                    <div class="timeline-body">
+                        <h4>תואר שני בפסיכוביולוגיה</h4>
+                        <p>אוניברסיטת תל אביב. מחקר בממשק בין מוח, התנהגות ופסיכולוגיה. התמקדות בבסיסים הנוירולוגיים של תהליכים קוגניטיביים.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 — 2021</div>
+                    <div class="timeline-body">
+                        <h4>דוקטורט בנוירופסיכולוגיה וסטיבולרית</h4>
+                        <p>אוניברסיטת תל אביב. מחקר על ההשלכות הקוגניטיביות של ניוון מוחיקי (Spinocerebellar ataxia), כולל מחקר חלוצי על הקשר בין המוחיק לתפקודים קוגניטיביים גבוהים.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 — היום</div>
+                    <div class="timeline-body">
+                        <h4>מרצה בכיר וראש מרכז מחקר</h4>
+                        <p>המכללה האקדמית עמק יזרעאל (מקס שטרן). ראש המרכז למחקר פסיכוביולוגי. מרצה בכיר בתוכנית M.A. בפסיכולוגיה חינוכית. פסיכולוג חינוכי מומחה ברישיון.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 — היום</div>
+                    <div class="timeline-body">
+                        <h4>חוקר חלוצי ב-AI ובריאות הנפש</h4>
+                        <p>עם השקת ChatGPT בנובמבר 2022, פרופ' אליוסף היה מהראשונים בעולם לפרסם מחקרים אמפיריים על יכולות מודלי שפה בהערכות פסיכולוגיות. פרסם עשרות מאמרים בכתבי עת מובילים תוך שנתיים בלבד.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 — היום</div>
+                    <div class="timeline-body">
+                        <h4>פרופסור חבר, אוניברסיטת חיפה</h4>
+                        <p>הפקולטה לחינוך, בית הספר לטיפול, ייעוץ והתפתחות האדם. מייסד שותף של קהילת "השלישי המלאכותי" (The Artificial Third) לחקר שילוב AI בפסיכותרפיה.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 — היום</div>
+                    <div class="timeline-body">
+                        <h4>עמית מחקר, אימפריאל קולג' לונדון</h4>
+                        <p>הפקולטה לרפואה, המחלקה למדעי המוח. שיתוף פעולה מחקרי בינלאומי בתחום AI ונוירופסיכולוגיה. במקביל, חוקר ביחידת AI במכון ל-AI יישומי של משרד החינוך הישראלי.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section about-section" id="about">
+    <!-- Research -->
+    <section class="section section-alt" id="research">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">אודות</h2>
-                <div class="title-decoration"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="about-text" contenteditable="false">
-                        <p class="lead-text">פרופ' זוהר אליוסף הוא <strong>פסיכולוג חינוכי מומחה</strong> וחוקר מוביל בתחום הממשק בין <strong>בינה מלאכותית לפסיכולוגיה</strong>. מחקריו חלוציים חוקרים את היכולות והמגבלות של מודלי שפה גדולים (LLMs) בתחום בריאות הנפש.</p>
-
-                        <p>פרופ' אליוסף משמש כ<strong>פרופסור חבר (Associate Professor)</strong> בבית הספר לטיפול, ייעוץ והתפתחות האדם, <strong>הפקולטה לחינוך, אוניברסיטת חיפה</strong>. הוא מכהן כראש המרכז למחקר פסיכוביולוגי ומרצה בכיר בתוכנית התואר השני לפסיכולוגיה חינוכית במכללה האקדמית עמק יזרעאל (מקס שטרן).</p>
-
-                        <p>בנוסף, הוא משמש כ<strong>עמית מחקר</strong> בפקולטה לרפואה, המחלקה למדעי המוח, <strong>אימפריאל קולג' לונדון</strong>, וכחוקר ביחידת הבינה המלאכותית במכון ל-AI יישומי, אגף המו"פ של <strong>משרד החינוך הישראלי</strong>.</p>
-
-                        <p>ד"ר אליוסף סיים את לימודי התואר הראשון בפסיכולוגיה <strong>באוניברסיטה הפתוחה</strong>, והשלים את התואר השני והדוקטורט בפסיכוביולוגיה ונוירופסיכולוגיה ב<strong>אוניברסיטת תל אביב</strong>.</p>
-                    </div>
-
-                    <div class="affiliations">
-                        <h3>שיוכים אקדמיים</h3>
-                        <div class="affiliation-cards">
-                            <div class="affiliation-card">
-                                <div class="affiliation-icon"><i class="fas fa-university"></i></div>
-                                <div class="affiliation-info">
-                                    <h4>אוניברסיטת חיפה</h4>
-                                    <p>פרופסור חבר, הפקולטה לחינוך</p>
-                                    <p>בית הספר לטיפול, ייעוץ והתפתחות האדם</p>
-                                </div>
-                            </div>
-                            <div class="affiliation-card">
-                                <div class="affiliation-icon"><i class="fas fa-graduation-cap"></i></div>
-                                <div class="affiliation-info">
-                                    <h4>המכללה האקדמית עמק יזרעאל</h4>
-                                    <p>ראש המרכז למחקר פסיכוביולוגי</p>
-                                    <p>מרצה בכיר - פסיכולוגיה חינוכית</p>
-                                </div>
-                            </div>
-                            <div class="affiliation-card">
-                                <div class="affiliation-icon"><i class="fas fa-flask"></i></div>
-                                <div class="affiliation-info">
-                                    <h4>אימפריאל קולג' לונדון</h4>
-                                    <p>עמית מחקר</p>
-                                    <p>הפקולטה לרפואה, מחלקת מדעי המוח</p>
-                                </div>
-                            </div>
-                            <div class="affiliation-card">
-                                <div class="affiliation-icon"><i class="fas fa-building-columns"></i></div>
-                                <div class="affiliation-info">
-                                    <h4>משרד החינוך</h4>
-                                    <p>חוקר - יחידת הבינה המלאכותית</p>
-                                    <p>המכון ל-AI יישומי, אגף מו"פ</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Areas -->
-    <section class="section research-section" id="research">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">תחומי מחקר</h2>
-                <div class="title-decoration"></div>
-                <p class="section-subtitle">מחקר חלוצי בממשק בין בינה מלאכותית, פסיכולוגיה ובריאות הנפש</p>
-            </div>
+            <h2 class="section-title">תחומי מחקר</h2>
+            <p class="section-desc">מחקר חלוצי בממשק בין בינה מלאכותית, פסיכולוגיה ובריאות הנפש</p>
             <div class="research-grid">
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-brain"></i></div>
                     <h3>בינה מלאכותית ובריאות הנפש</h3>
                     <p>חקירת יכולותיהם ומגבלותיהם של מודלי שפה גדולים (ChatGPT, Claude, Gemini) בהערכת סיכון אובדני, זיהוי רגשות, ותמיכה פסיכולוגית. מחקריו הראו כי AI מסוגל לזהות רגשות ברמה גבוהה מהאדם הממוצע.</p>
-                    <div class="research-tags">
-                        <span class="tag">LLMs</span>
-                        <span class="tag">ChatGPT</span>
-                        <span class="tag">הערכת סיכון</span>
-                        <span class="tag">בריאות הנפש</span>
+                    <div class="tags">
+                        <span>LLMs</span><span>ChatGPT</span><span>הערכת סיכון</span><span>בריאות הנפש</span>
                     </div>
                 </div>
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-heart-pulse"></i></div>
                     <h3>מודעות רגשית וזיהוי רגשות</h3>
-                    <p>מחקר מעמיק על יכולת מערכות AI לזהות ולהבין רגשות אנושיים באמצעות טקסט, וידאו ותמונות. הוכחה כי ChatGPT עולה על הביצועים הממוצעים של בני אדם בהערכות מודעות רגשית (LEAS).</p>
-                    <div class="research-tags">
-                        <span class="tag">מודעות רגשית</span>
-                        <span class="tag">LEAS</span>
-                        <span class="tag">Theory of Mind</span>
+                    <p>מחקר מעמיק על יכולת מערכות AI לזהות ולהבין רגשות אנושיים באמצעות טקסט, וידאו ותמונות. הוכחה כי ChatGPT עולה על הביצועים הממוצעים של בני אדם בהערכות מודעות רגשית (LEAS) עם ציון Z = 4.26.</p>
+                    <div class="tags">
+                        <span>מודעות רגשית</span><span>LEAS</span><span>Theory of Mind</span>
                     </div>
                 </div>
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-shield-halved"></i></div>
-                    <h3>חוסן פסיכולוגי בילדים</h3>
-                    <p>פיתוח התערבויות באמצעות כלי AI ליצירת מרחבים משחקיים המקדמים חוסן פסיכולוגי בילדים, בשיטת "הסיפור בשישה חלקים", שפותחו בין היתר בעקבות אירועי 7 באוקטובר 2023.</p>
-                    <div class="research-tags">
-                        <span class="tag">חוסן</span>
-                        <span class="tag">ילדים ונוער</span>
-                        <span class="tag">משחק טיפולי</span>
+                    <h3>אתיקה של AI בפסיכולוגיה</h3>
+                    <p>"השלישי המלאכותי" — מסגרת אתית וקלינית לשילוב בינה מלאכותית גנרטיבית בטיפול פסיכולוגי. בחינת דמוקרטיזציה של בריאות הנפש והנגשת טיפול לאוכלוסיות מוחלשות באמצעות AI.</p>
+                    <div class="tags">
+                        <span>אתיקה</span><span>דמוקרטיזציה</span><span>השלישי המלאכותי</span>
                     </div>
                 </div>
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-users"></i></div>
-                    <h3>מנטליזציה ותהליכים קוגניטיביים</h3>
-                    <p>מחקר על יכולת ה-AI להבין מצבים מנטליים של אחרים (mindreading), כולל רגשות, אמונות וכוונות. בחינת היכולת הקוגניטיבית-חברתית של AI באמצעות גירויים דינמיים שמיעתיים-חזותיים.</p>
-                    <div class="research-tags">
-                        <span class="tag">מנטליזציה</span>
-                        <span class="tag">Mindreading</span>
-                        <span class="tag">נוירופסיכולוגיה</span>
+                    <h3>מנטליזציה ויכולות קוגניטיביות-חברתיות</h3>
+                    <p>מחקר על יכולת AI להבין מצבים מנטליים של אחרים (mindreading), רגשות, אמונות וכוונות. פורסם ב-Nature Reviews Psychology כמאמר מוביל בנושא יכולות סוציו-קוגניטיביות של AI.</p>
+                    <div class="tags">
+                        <span>מנטליזציה</span><span>Mindreading</span><span>נוירופסיכולוגיה</span>
                     </div>
                 </div>
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-scale-balanced"></i></div>
-                    <h3>אתיקה של AI בבריאות הנפש</h3>
-                    <p>בחינת ההיבטים האתיים של דמוקרטיזציה של בריאות הנפש באמצעות AI גנרטיבי. "השלישי המלאכותי" - מסגרת אתית לשילוב AI בטיפול פסיכולוגי תוך שמירה על הקשר האנושי.</p>
-                    <div class="research-tags">
-                        <span class="tag">אתיקה</span>
-                        <span class="tag">דמוקרטיזציה</span>
-                        <span class="tag">השלישי המלאכותי</span>
+                    <h3>טראומה, חוסן ומשבר</h3>
+                    <p>מחקר על מתנדבי בריאות הנפש לאחר 7 באוקטובר, אסטרטגיות התמודדות של חטופים ששוחררו, ופיתוח התערבויות משחקיות לחיזוק חוסן פסיכולוגי בילדים באמצעות AI.</p>
+                    <div class="tags">
+                        <span>7 באוקטובר</span><span>חוסן</span><span>טראומה</span><span>ילדים</span>
                     </div>
                 </div>
                 <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-child"></i></div>
-                    <h3>ADHD, מוגבלויות קוגניטיביות וחינוך</h3>
-                    <p>מחקר על הפוטנציאל הרב-ממדי של AI גנרטיבי עבור אנשים עם מוגבלויות קוגניטיביות, כולל בחינת דפוסי ייחוס של AI כלפי תלמידים עם ובלי לקויות למידה, ומחקר על ADHD כהפרעה נוירו-קוגניטיבית.</p>
-                    <div class="research-tags">
-                        <span class="tag">ADHD</span>
-                        <span class="tag">לקויות למידה</span>
-                        <span class="tag">הכלה</span>
+                    <h3>AI, לקויות למידה ו-ADHD</h3>
+                    <p>מחקר על הפוטנציאל הרב-ממדי של AI גנרטיבי עבור אנשים עם מוגבלויות קוגניטיביות. בחינת דפוסי ייחוס והטיות של מודלי שפה כלפי תלמידים עם לקויות למידה.</p>
+                    <div class="tags">
+                        <span>ADHD</span><span>לקויות למידה</span><span>נגישות קוגניטיבית</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section class="section publications-section" id="publications">
+    <!-- Publications -->
+    <section class="section" id="publications">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">פרסומים אקדמיים נבחרים</h2>
-                <div class="title-decoration"></div>
-                <p class="section-subtitle">מחקרים פורצי דרך בכתבי עת מובילים</p>
-            </div>
+            <h2 class="section-title">פרסומים אקדמיים</h2>
+            <p class="section-desc">69+ מאמרים בכתבי עת מובילים. 1,288+ ציטוטים. h-index: 21.</p>
 
             <div class="pub-filters">
                 <button class="pub-filter active" data-filter="all">הכל</button>
                 <button class="pub-filter" data-filter="ai-mental">AI ובריאות הנפש</button>
                 <button class="pub-filter" data-filter="emotion">זיהוי רגשות</button>
                 <button class="pub-filter" data-filter="ethics">אתיקה</button>
-                <button class="pub-filter" data-filter="trauma">טראומה ומשבר</button>
+                <button class="pub-filter" data-filter="trauma">טראומה</button>
+                <button class="pub-filter" data-filter="neuro">נוירופסיכולוגיה</button>
             </div>
 
-            <div class="publications-list">
-                <!-- Publication 1 -->
-                <article class="pub-card" data-category="emotion" id="pub-chatgpt-emotion">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">ChatGPT Outperforms Humans in Emotional Awareness Evaluations</h3>
-                        <p class="pub-authors">Elyoseph, Z., Hadar-Shoval, D., Asraf, K., & Lvovsky, M.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Psychology, 14, Article 1199058</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר פורץ דרך שהשתמש בסולם רמות המודעות הרגשית (LEAS) לניתוח תגובות ChatGPT לעשרים תרחישים. בבדיקה הראשונה, ChatGPT הדגים ביצועים גבוהים משמעותית מהאוכלוסייה הכללית (Z = 2.84). בבדיקה השנייה, חודש לאחר מכן, הביצועים השתפרו עוד יותר והגיעו כמעט לציון המקסימלי (Z = 4.26), עם רמת דיוק של 9.7/10.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1199058/full" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
-                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10254409/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PMC</a>
-                        </div>
-                        <div class="pub-metrics">
-                            <span class="metric"><i class="fas fa-quote-right"></i> מצוטט רבות</span>
-                            <span class="metric"><i class="fas fa-star"></i> מחקר פורץ דרך</span>
+            <div class="pub-list">
+
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>The Promise and Pitfalls of Generative AI</h3>
+                        <p class="pub-meta">Choudhury, M., Elyoseph, Z., Fast, N.J., Ong, D.C., Nsoesie, E.O. & Pavlick, E.</p>
+                        <p class="pub-journal">Nature Reviews Psychology, 4(2), 75-80</p>
+                        <div class="pub-he">מאמר ב-Nature Reviews Psychology הבוחן את היכולות הקוגניטיביות-חברתיות של בינה מלאכותית, את ההבטחות ואת המלכודות. הפרסום בכתב העת היוקרתי ביותר בתחום מעיד על ההכרה הבינלאומית במחקרו של פרופ' אליוסף.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.nature.com/articles/s44159-024-00402-0" target="_blank">Nature Reviews Psychology</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 2 -->
-                <article class="pub-card" data-category="ai-mental" id="pub-suicide-risk">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Beyond Human Expertise: The Promise and Limitations of ChatGPT in Suicide Risk Assessment</h3>
-                        <p class="pub-authors">Elyoseph, Z. & Levkovich, I.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Psychiatry, 14, Article 1213141</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר חלוצי שבחן את יכולתו של ChatGPT להעריך סיכון אובדני. הממצאים הראו כי ChatGPT דירג את הסיכון לניסיון אובדנות נמוך יותר מאנשי מקצוע בבריאות הנפש בכל התנאים, ודירג חוסן נפשי נמוך מהנורמות ברוב התנאים. המשמעות: מי שנשען על ChatGPT להערכת סיכון אובדני עלול לקבל הערכה לא מדויקת.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/37593450/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PubMed</a>
-                        </div>
-                        <div class="pub-metrics">
-                            <span class="metric"><i class="fas fa-quote-right"></i> מצוטט רבות</span>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>Applying Language Models for Suicide Prevention: Evaluating News Article Adherence to WHO Reporting Guidelines</h3>
+                        <p class="pub-meta">Elyoseph, Z., Levkovich, I., Rabin, E., Shemo, G., Szpiler, T., Shoval, D.H. & Belz, Y.L.</p>
+                        <p class="pub-journal">npj Mental Health Research, 4(1), Article 25</p>
+                        <div class="pub-he">מחקר חדשני שבחן את יכולתם של מודלי שפה להעריך עד כמה כתבות חדשותיות עומדות בהנחיות ארגון הבריאות העולמי לדיווח על התאבדות. שימוש ב-AI למניעת התאבדות ברמת התקשורת.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.nature.com/articles/s44184-025-00121-9" target="_blank">npj Mental Health Research</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 3 -->
-                <article class="pub-card" data-category="ai-mental" id="pub-suicide-gpt4">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Suicide Risk Assessments Through the Eyes of ChatGPT-3.5 Versus ChatGPT-4: Vignette Study</h3>
-                        <p class="pub-authors">Levkovich, I. & Elyoseph, Z.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> JMIR Mental Health, 2023(1), e51232</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר השוואתי בין GPT-3.5 ל-GPT-4 בהערכת סיכון אובדני. הממצאים הראו כי הערכת הסיכון של GPT-4 הייתה דומה לזו של אנשי מקצוע בבריאות הנפש, בעוד ש-GPT-3.5 סיפק הערכות נמוכות משמעותית של סיכון לניסיון אובדנות. המחקר מדגיש את ההתקדמות המשמעותית בין גרסאות המודלים.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://mental.jmir.org/2023/1/e51232" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
-                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10551796/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PMC</a>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>Transforming Perceptions: Exploring the Multifaceted Potential of Generative AI for People With Cognitive Disabilities</h3>
+                        <p class="pub-meta">Hadar Souval, D., Haber, Y., Tal, A., Simon, T., Elyoseph, T. & Elyoseph, Z.</p>
+                        <p class="pub-journal">JMIR Neurotechnology, 4, e64182</p>
+                        <div class="pub-he">מחקר על הפוטנציאל הרב-ממדי של AI גנרטיבי לשיפור איכות החיים של אנשים עם מוגבלויות קוגניטיביות. בחינת אפשרויות הנגשה, תקשורת ותמיכה באמצעות טכנולוגיות שפה מתקדמות.</div>
+                        <div class="pub-actions">
+                            <a href="https://neuro.jmir.org/2025/1/e64182" target="_blank">JMIR Neurotechnology</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 4 -->
-                <article class="pub-card" data-category="ethics" id="pub-artificial-third">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">The Artificial Third: Utilizing ChatGPT in Mental Health</h3>
-                        <p class="pub-authors">Tal, A., Elyoseph, Z., Haber, Y., Angert, T., Gur, T., Simon, T., & Asman, O.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> American Journal of Bioethics, 23(10), 74-77</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מאמר מכונן שמציג את הרעיון של "השלישי המלאכותי" - מסגרת אתית וקלינית לשילוב בינה מלאכותית גנרטיבית בטיפול פסיכולוגי. המאמר מציע ש-AI יכול לשמש כ"צד שלישי" בתהליך הטיפולי, תוך שמירה על הקשר האנושי כמרכיב הקריטי ביותר.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://www.tandfonline.com/doi/full/10.1080/15265161.2023.2250297" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
-                        </div>
-                        <div class="pub-metrics">
-                            <span class="metric"><i class="fas fa-lightbulb"></i> מאמר מכונן</span>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>Attributional Patterns Toward Students With and Without Learning Disabilities</h3>
+                        <p class="pub-meta">Levkovich, I., Rabin, E., Farraj, R.H. & Elyoseph, Z.</p>
+                        <p class="pub-journal">Research in Developmental Disabilities, 160, 104970</p>
+                        <div class="pub-he">מחקר שבחן דפוסי ייחוס של מודלי AI (ChatGPT, Claude, Gemini) לעומת סטודנטים להוראה בנוגע למשוב, תסכול, אמפתיה וציפיות כלפי תלמידים עם ובלי לקויות למידה.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.sciencedirect.com/journal/research-in-developmental-disabilities" target="_blank">Research in Developmental Disabilities</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 5 -->
-                <article class="pub-card" data-category="ethics" id="pub-democratization">
-                    <div class="pub-year">2024</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">An Ethical Perspective on the Democratization of Mental Health with Generative AI</h3>
-                        <p class="pub-authors">Elyoseph, Z. et al.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> JMIR Mental Health</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מאמר הבוחן את ההיבטים האתיים של דמוקרטיזציה של שירותי בריאות הנפש באמצעות בינה מלאכותית גנרטיבית. המחקר מנתח כיצד AI יכול להרחיב נגישות לשירותי בריאות הנפש, במיוחד לאור המחסור העולמי במטפלים, תוך בחינת הסיכונים האתיים הכרוכים בכך.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/39417792/" target="_blank" class="pub-link"><i class="fas fa-database"></i> PubMed</a>
+                <article class="pub" data-category="emotion">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>The Feasibility of Large Language Models in Verbal Comprehension Assessment</h3>
+                        <p class="pub-meta">Haber, Y., Hadar Shoval, D., Levkovich, I., Yinon, D., Gigi, K., Pen, O., Angert, T. & Elyoseph, Z.</p>
+                        <p class="pub-journal">Frontiers in Digital Health, 7, 1512273</p>
+                        <div class="pub-he">מחקר שבחן את ישימות השימוש במודלי שפה גדולים להערכה של הבנה מילולית — תחום שעד כה נשען על מבחנים סטנדרטיים יקרים ומוגבלי נגישות.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.frontiersin.org/journals/digital-health" target="_blank">Frontiers in Digital Health</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 6 -->
-                <article class="pub-card" data-category="ai-mental" id="pub-anxiety">
-                    <div class="pub-year">2024</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Large Language Models Outperform General Practitioners in Identifying Complex Cases of Childhood Anxiety</h3>
-                        <p class="pub-authors">Levkovich, I., Rabin, E., Brann, M. & Elyoseph, Z.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Digital Health</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר שבחן מודלי שפה גדולים (ChatGPT-3.5, ChatGPT-4, Claude, Gemini) באבחון הפרעות חרדה בילדים בהשוואה לרופאים כלליים. הממצאים הראו כי מודלי ה-AI עלו על הרופאים הכלליים בזיהוי מקרים מורכבים של חרדה בילדות.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://journals.sagepub.com/doi/10.1177/20552076241294182" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                <article class="pub" data-category="neuro">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>The Feasibility of LLMs in Verbal Comprehension — JMIR Formative Research</h3>
+                        <p class="pub-meta">Hadar-Shoval, D., Lvovsky, M., Asraf, K., Shimoni, Y. & Elyoseph, Z.</p>
+                        <p class="pub-journal">JMIR Formative Research, 9, e68347</p>
+                        <div class="pub-he">מחקר על התאמה בין ערכים אנושיים לתגובות מודלי שפה, תוך שימוש בתיאוריית הערכים הבסיסיים של שוורץ.</div>
+                        <div class="pub-actions">
+                            <a href="https://formative.jmir.org/2025/1/e68347" target="_blank">JMIR Formative Research</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 7 -->
-                <article class="pub-card" data-category="trauma" id="pub-oct7">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Mental Health Volunteers After the Oct 7 Gaza Border Crisis in Israel: Silent Warriors</h3>
-                        <p class="pub-authors">Elyoseph, Z., Hadar-Shoval, D., Angert, T., Yitshaki, N., Hol, E., Asman, O. & Levkovich, I.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> The Lancet Psychiatry, 11(1), 10-12</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מאמר ב-Lancet Psychiatry העוסק במתנדבי בריאות הנפש בעקבות משבר 7 באוקטובר. המאמר מתאר את "הלוחמים השקטים" - אנשי המקצוע והמתנדבים שהוקפצו לתמוך נפשית באוכלוסיות שנפגעו, ואת האתגרים הייחודיים שהם התמודדו עמם.</p>
-                        </div>
-                        <div class="pub-metrics">
-                            <span class="metric"><i class="fas fa-fire"></i> The Lancet Psychiatry</span>
+                <article class="pub" data-category="trauma">
+                    <span class="pub-year-badge">2025</span>
+                    <div class="pub-body">
+                        <h3>Coping Strategies During Captivity: A Qualitative Study on Released Civilian Abductees in Gaza</h3>
+                        <p class="pub-meta">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
+                        <p class="pub-journal">BMC Psychology</p>
+                        <div class="pub-he">מחקר איכותני חלוצי שבחן את אסטרטגיות ההתמודדות של חטופים אזרחיים שהשתחררו משבי בעזה. תובנות חשובות על מנגנוני הישרדות במצבי שבי קיצוניים.</div>
+                        <div class="pub-actions">
+                            <a href="https://link.springer.com/article/10.1186/s40359-025-03183-0" target="_blank">BMC Psychology</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 8 -->
-                <article class="pub-card" data-category="trauma" id="pub-captivity">
-                    <div class="pub-year">2025</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Coping Strategies During Captivity: A Qualitative Study on Released Civilian Abductees in Gaza</h3>
-                        <p class="pub-authors">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> BMC Psychology</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר איכותני חלוצי שבחן את אסטרטגיות ההתמודדות של חטופים אזרחיים שהשתחררו משבי בעזה. המחקר מספק תובנות חשובות על מנגנוני ההתמודדות של אנשים במצבי שבי קיצוניים ותורם להבנה של טיפול פוסט-טראומטי בשחרורם.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://link.springer.com/article/10.1186/s40359-025-03183-0" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                <article class="pub" data-category="emotion">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>Capacity of Generative AI to Interpret Human Emotions From Visual and Textual Data</h3>
+                        <p class="pub-meta">Elyoseph, Z., Refoua, E., Asraf, K., Lvovsky, M., Shimoni, Y. & Hadar-Shoval, D.</p>
+                        <p class="pub-journal">JMIR Mental Health, 11(1), e54369</p>
+                        <div class="pub-he">מחקר שבדק את יכולת מודלי AI לפרש רגשות אנושיים מנתונים חזותיים וטקסטואליים. הממצאים הראו כי AI מזהה רגשות טוב יותר מבני אדם — גם מתמונות, גם מטקסט וגם מווידאו.</div>
+                        <div class="pub-actions">
+                            <a href="https://mental.jmir.org/2024/1/e54369" target="_blank">JMIR Mental Health</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 9 -->
-                <article class="pub-card" data-category="trauma" id="pub-hell">
-                    <div class="pub-year">2024</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">"Every Day is like Hell": Civilian Abductees Released from Captivity in Gaza</h3>
-                        <p class="pub-authors">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Journal of Loss and Trauma</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר מעמיק על חוויותיהם של חטופים אזרחיים ששוחררו מעזה. המחקר מתעד את העוצמה הטראומטית של השבי ואת אתגרי ההתמודדות בשחרור, תוך ניתוח נרטיבים אישיים שמאירים את המורכבות של טראומת השבי.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://www.tandfonline.com/doi/abs/10.1080/15325024.2024.2400122" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> מאמר מלא</a>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>Comparing the Perspectives of Generative AI, Mental Health Experts, and the General Public on Schizophrenia Recovery</h3>
+                        <p class="pub-meta">Elyoseph, Z. & Levkovich, I.</p>
+                        <p class="pub-journal">JMIR Mental Health, 11, e53043</p>
+                        <div class="pub-he">מחקר השוואתי בין עמדות AI, מומחי בריאות הנפש והציבור הרחב לגבי החלמה מסכיזופרניה. ממצאים מפתיעים על פערי תפיסה וסטיגמה.</div>
+                        <div class="pub-actions">
+                            <a href="https://mental.jmir.org/2024/1/e53043" target="_blank">JMIR Mental Health</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 10 -->
-                <article class="pub-card" data-category="ai-mental" id="pub-learning-disabilities">
-                    <div class="pub-year">2025</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Attributional Patterns Toward Students With and Without Learning Disabilities</h3>
-                        <p class="pub-authors">Levkovich, I., Rabin, E., Farraj, R. H. & Elyoseph, Z.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Research in Developmental Disabilities, 160, 104970</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר שבחן דפוסי ייחוס של מודלי AI (ChatGPT-3.5, ChatGPT-4, Claude, Gemini) לעומת סטודנטים להוראה, בנוגע למשוב, תסכול, אמפתיה וציפיות כלפי תלמידים עם ובלי לקויות למידה. הממצאים מספקים תובנות חשובות על הטיות פוטנציאליות של AI בהקשר חינוכי.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://cris.haifa.ac.il/en/publications/" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> University of Haifa</a>
+                <article class="pub" data-category="ethics">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>Assessing the Alignment of Large Language Models With Human Values for Mental Health Integration</h3>
+                        <p class="pub-meta">Hadar-Shoval, D., Asraf, K., Mizrachi, Y., Haber, Y. & Elyoseph, Z.</p>
+                        <p class="pub-journal">JMIR Mental Health, 11, e55988</p>
+                        <div class="pub-he">מחקר שבחן את ההתאמה בין הערכים של מודלי שפה גדולים לערכים אנושיים, באמצעות תיאוריית הערכים של שוורץ — שאלה קריטית לשילוב AI בבריאות הנפש.</div>
+                        <div class="pub-actions">
+                            <a href="https://mental.jmir.org/2024/1/e55988" target="_blank">JMIR Mental Health</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 11 -->
-                <article class="pub-card" data-category="emotion" id="pub-mindreading">
-                    <div class="pub-year">2024</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">The Next Frontier in Mindreading? Assessing Generative AI's Social-Cognitive Capabilities</h3>
-                        <p class="pub-authors">Elyoseph, Z. et al.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Frontiers in Digital Health</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר שבחן את יכולות ה-AI בקריאת מחשבות חברתית (mindreading) באמצעות גירויים דינמיים שמיעתיים-חזותיים. הממצאים הראו כי AI גנרטיבי עולה על הביצוע הממוצע של בני אדם בהערכות סטנדרטיות של קריאת מחשבות.</p>
+                <article class="pub" data-category="ethics">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>An Ethical Perspective on the Democratization of Mental Health with Generative AI</h3>
+                        <p class="pub-meta">Elyoseph, Z. et al.</p>
+                        <p class="pub-journal">JMIR Mental Health</p>
+                        <div class="pub-he">מאמר הבוחן את ההיבטים האתיים של דמוקרטיזציה של שירותי בריאות הנפש באמצעות AI גנרטיבי, במיוחד לאור המחסור העולמי במטפלים.</div>
+                        <div class="pub-actions">
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/39417792/" target="_blank">PubMed</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 12 -->
-                <article class="pub-card" data-category="emotion" id="pub-emotion-recognition">
-                    <div class="pub-year">2024</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Generative AI Demonstrates Excellent Emotion Recognition Abilities Across Ethnical Boundaries</h3>
-                        <p class="pub-authors">Refoua, E., Meinlschmidt, G. & Elyoseph, Z.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> SSRN Preprint</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מחקר שבדק את יכולות זיהוי הרגשות של AI גנרטיבי חוצה גבולות אתניים. הממצאים מראים כי מודלי AI מפגינים יכולות מצוינות בזיהוי רגשות ללא הטיות אתניות משמעותיות, מה שמעיד על פוטנציאל לשימושים קליניים גלובליים.</p>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4901183" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> SSRN</a>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>Large Language Models Outperform General Practitioners in Identifying Complex Cases of Childhood Anxiety</h3>
+                        <p class="pub-meta">Levkovich, I., Rabin, E., Brann, M. & Elyoseph, Z.</p>
+                        <p class="pub-journal">Digital Health</p>
+                        <div class="pub-he">מחקר שהראה כי מודלי AI עולים על רופאים כלליים בזיהוי מקרים מורכבים של חרדה בילדות.</div>
+                        <div class="pub-actions">
+                            <a href="https://journals.sagepub.com/doi/10.1177/20552076241294182" target="_blank">SAGE Digital Health</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Publication 13 -->
-                <article class="pub-card" data-category="ai-mental" id="pub-nature">
-                    <div class="pub-year">2025</div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">AI Social-Cognitive Capabilities</h3>
-                        <p class="pub-authors">Choudhury, M., Elyoseph, Z., Fast, N. J., Ong, D. C., Nsoesie, E. O. & Pavlick, E.</p>
-                        <p class="pub-journal"><i class="fas fa-book"></i> Nature Reviews Psychology, 4(2), 75-80</p>
-                        <div class="pub-summary-he">
-                            <h4>תקציר בעברית</h4>
-                            <p>מאמר ב-Nature Reviews Psychology הבוחן את היכולות הקוגניטיביות-חברתיות של בינה מלאכותית. הפרסום בכתב עת יוקרתי זה מעיד על ההכרה הבינלאומית במחקרו של פרופ' אליוסף.</p>
-                        </div>
-                        <div class="pub-metrics">
-                            <span class="metric"><i class="fas fa-fire"></i> Nature Reviews Psychology</span>
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>The Impact of History of Depression and Access to Weapons on Suicide Risk Assessment</h3>
+                        <p class="pub-meta">Shinan-Altman, S., Elyoseph, Z. & Levkovich, I.</p>
+                        <p class="pub-journal">Journal of Medical Internet Research</p>
+                        <div class="pub-he">מחקר השוואתי בין ChatGPT-3.5 ו-GPT-4 בהערכת סיכון אובדני כשקיים היסטוריה של דיכאון ונגישות לנשק.</div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="emotion">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>The Next Frontier in Mindreading? Assessing Generative AI's Social-Cognitive Capabilities</h3>
+                        <p class="pub-meta">Elyoseph, Z. et al.</p>
+                        <p class="pub-journal">Frontiers in Digital Health</p>
+                        <div class="pub-he">מחקר שבחן את יכולות AI בקריאת מחשבות חברתית באמצעות גירויים דינמיים שמיעתיים-חזותיים. AI עולה על ביצוע ממוצע של בני אדם.</div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="emotion">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>Generative AI Demonstrates Excellent Emotion Recognition Abilities Across Ethnical Boundaries</h3>
+                        <p class="pub-meta">Refoua, E., Meinlschmidt, G. & Elyoseph, Z.</p>
+                        <p class="pub-journal">SSRN Preprint</p>
+                        <div class="pub-he">מחקר שמראה כי AI מפגין יכולות מצוינות בזיהוי רגשות ללא הטיות אתניות — פוטנציאל לשימושים קליניים גלובליים.</div>
+                        <div class="pub-actions">
+                            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4901183" target="_blank">SSRN</a>
                         </div>
                     </div>
                 </article>
+
+                <article class="pub" data-category="trauma">
+                    <span class="pub-year-badge">2024</span>
+                    <div class="pub-body">
+                        <h3>"Every Day is like Hell": Civilian Abductees Released from Captivity in Gaza</h3>
+                        <p class="pub-meta">Levkovich, I., Elyoseph, Z. & Shinan-Altman, S.</p>
+                        <p class="pub-journal">Journal of Loss and Trauma, 30(1), 1-21</p>
+                        <div class="pub-he">מחקר על חוויותיהם של חטופים אזרחיים ששוחררו מעזה. תיעוד טראומת השבי וניתוח נרטיבים אישיים.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.tandfonline.com/doi/abs/10.1080/15325024.2024.2400122" target="_blank">Journal of Loss and Trauma</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="emotion">
+                    <span class="pub-year-badge">2023</span>
+                    <div class="pub-body">
+                        <h3>ChatGPT Outperforms Humans in Emotional Awareness Evaluations</h3>
+                        <p class="pub-meta">Elyoseph, Z., Hadar-Shoval, D., Asraf, K. & Lvovsky, M.</p>
+                        <p class="pub-journal">Frontiers in Psychology, 14, Article 1199058</p>
+                        <div class="pub-he">מחקר פורץ דרך שהראה כי ChatGPT מדגים ביצועים גבוהים משמעותית מהאוכלוסייה הכללית במודעות רגשית (Z = 4.26), עם רמת דיוק של 9.7/10.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1199058/full" target="_blank">Frontiers in Psychology</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10254409/" target="_blank">PMC</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2023</span>
+                    <div class="pub-body">
+                        <h3>Beyond Human Expertise: The Promise and Limitations of ChatGPT in Suicide Risk Assessment</h3>
+                        <p class="pub-meta">Elyoseph, Z. & Levkovich, I.</p>
+                        <p class="pub-journal">Frontiers in Psychiatry, 14, Article 1213141</p>
+                        <div class="pub-he">מחקר חלוצי על יכולת ChatGPT להעריך סיכון אובדני. ChatGPT דירג סיכון נמוך מאנשי מקצוע — מי שנשען עליו עלול לקבל הערכה לא מדויקת.</div>
+                        <div class="pub-actions">
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/37593450/" target="_blank">PubMed</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="ai-mental">
+                    <span class="pub-year-badge">2023</span>
+                    <div class="pub-body">
+                        <h3>Suicide Risk Assessments Through the Eyes of ChatGPT-3.5 Versus ChatGPT-4: Vignette Study</h3>
+                        <p class="pub-meta">Levkovich, I. & Elyoseph, Z.</p>
+                        <p class="pub-journal">JMIR Mental Health, 2023(1), e51232</p>
+                        <div class="pub-he">GPT-4 הגיע לרמת הערכת סיכון דומה לאנשי מקצוע בבריאות הנפש, בעוד GPT-3.5 סיפק הערכות נמוכות משמעותית. קפיצה דרמטית בין גרסאות.</div>
+                        <div class="pub-actions">
+                            <a href="https://mental.jmir.org/2023/1/e51232" target="_blank">JMIR Mental Health</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10551796/" target="_blank">PMC</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="ethics">
+                    <span class="pub-year-badge">2023</span>
+                    <div class="pub-body">
+                        <h3>The Artificial Third: Utilizing ChatGPT in Mental Health</h3>
+                        <p class="pub-meta">Tal, A., Elyoseph, Z., Haber, Y., Angert, T., Gur, T., Simon, T. & Asman, O.</p>
+                        <p class="pub-journal">American Journal of Bioethics, 23(10), 74-77</p>
+                        <div class="pub-he">מאמר מכונן שהציג את הרעיון של "השלישי המלאכותי" — מסגרת לשילוב AI כ"צד שלישי" בתהליך הטיפולי, תוך שמירה על הקשר האנושי.</div>
+                        <div class="pub-actions">
+                            <a href="https://www.tandfonline.com/doi/full/10.1080/15265161.2023.2250297" target="_blank">American Journal of Bioethics</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pub" data-category="trauma">
+                    <span class="pub-year-badge">2023</span>
+                    <div class="pub-body">
+                        <h3>Mental Health Volunteers After the Oct 7 Gaza Border Crisis in Israel: Silent Warriors</h3>
+                        <p class="pub-meta">Elyoseph, Z., Hadar-Shoval, D., Angert, T., Yitshaki, N., Hol, E., Asman, O. & Levkovich, I.</p>
+                        <p class="pub-journal">The Lancet Psychiatry, 11(1), 10-12</p>
+                        <div class="pub-he">מאמר ב-Lancet Psychiatry על "הלוחמים השקטים" — מתנדבי בריאות הנפש שהוקפצו לתמוך נפשית באוכלוסיות שנפגעו ב-7 באוקטובר.</div>
+                    </div>
+                </article>
+
             </div>
 
-            <div class="pub-more">
-                <p>לרשימה המלאה של הפרסומים:</p>
-                <div class="pub-external-links">
-                    <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank" class="btn btn-outline">
-                        <i class="fas fa-graduation-cap"></i> Google Scholar
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-researchgate"></i> ResearchGate
-                    </a>
-                    <a href="https://orcid.org/0000-0002-5717-4074" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-orcid"></i> ORCID
-                    </a>
-                    <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank" class="btn btn-outline">
-                        <i class="fas fa-university"></i> University of Haifa
-                    </a>
+            <div class="pub-external">
+                <p>לרשימה המלאה:</p>
+                <div class="pub-links-row">
+                    <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank">Google Scholar</a>
+                    <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank">ResearchGate</a>
+                    <a href="https://orcid.org/0000-0002-5717-4074" target="_blank">ORCID</a>
+                    <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank">University of Haifa</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Media & Lectures Section -->
-    <section class="section media-section" id="media">
+    <!-- Bots & AI Expertise -->
+    <section class="section section-alt" id="bots">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">מדיה והרצאות</h2>
-                <div class="title-decoration"></div>
-                <p class="section-subtitle">הרצאות, פודקאסטים, ראיונות וכנסים</p>
+            <h2 class="section-title">בניית בוטים וסוכני AI</h2>
+            <div class="bots-content">
+                <div class="bots-text" contenteditable="false">
+                    <p class="bio-lead">פרופ' אליוסף משלב ידע אקדמי עמוק עם מומחיות טכנית מעשית. הוא מתכנן, בונה ומטמיע סוכני AI (AI Agents) ובוטים חכמים המבוססים על מודלי שפה גדולים — מ-ChatGPT ו-Claude ועד מערכות מותאמות אישית.</p>
+
+                    <p>התמחויותיו כוללות תכנון ארכיטקטורות שיחה מורכבות, עיצוב פרומפטים מתקדם (Prompt Engineering), בניית pipelines אוטומטיים לעיבוד טקסט וניתוח רגשות, ופיתוח כלי AI להכשרת מטפלים ואנשי מקצוע בבריאות הנפש.</p>
+
+                    <p>הוא מוביל סדנאות מעשיות ליצירת פרומפטים ובניית בוטים, ומלווה ארגונים בהטמעת פתרונות AI — מבתי חולים ומכללות ועד חברות טכנולוגיה. הגישה שלו: AI לא מחליף את האדם, אלא הופך אותו ליותר מקצועי ויותר אנושי.</p>
+                </div>
+                <div class="bots-capabilities">
+                    <div class="capability">
+                        <h4>סוכני שיח אוטונומיים</h4>
+                        <p>תכנון ובנייה של בוטים המנהלים שיחות מורכבות ורב-שלביות, עם הבנת הקשר עמוקה ויכולת הסתגלות למשתמש.</p>
+                    </div>
+                    <div class="capability">
+                        <h4>Prompt Engineering מתקדם</h4>
+                        <p>עיצוב מערכות פרומפטים מדויקות ליישומים קליניים, חינוכיים וארגוניים. סדנאות הכשרה לצוותים.</p>
+                    </div>
+                    <div class="capability">
+                        <h4>AI לבריאות הנפש</h4>
+                        <p>פיתוח כלים מבוססי AI להכשרת מטפלים, זיהוי סיכון רגשי, והרחבת נגישות לשירותי בריאות הנפש.</p>
+                    </div>
+                    <div class="capability">
+                        <h4>הטמעה ארגונית</h4>
+                        <p>ליווי ארגונים מקצה לקצה — מזיהוי הצורך, דרך בניית הפתרון ועד הטמעה ומדידת אפקטיביות.</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Media -->
+    <section class="section" id="media">
+        <div class="container">
+            <h2 class="section-title">מדיה והרצאות</h2>
+            <p class="section-desc">הרצאות, פודקאסטים, ראיונות וכנסים</p>
             <div class="media-grid">
-                <!-- Podcast -->
-                <div class="media-card podcast-card">
-                    <div class="media-badge">פודקאסט</div>
-                    <div class="media-icon"><i class="fas fa-podcast"></i></div>
-                    <h3>דיבורי בינה - מעבר למראה הדיגיטלית</h3>
-                    <p>פרק מיוחד על בינה מלאכותית במחוזות הנפש עם פרופ' זוהר אליוסף בפודקאסט של תום הגלעדי. הפרק מתמקד בהשפעה המהפכנית של AI על עולם בריאות הנפש.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-microphone"></i> דיבורי בינה עם תום הגלעדי</span>
-                    </div>
-                    <a href="https://tomhagiladi.podbean.com/e/%D7%A4%D7%A8%D7%A7-10-%D7%9E%D7%A2%D7%91%D7%A8-%D7%9C%D7%9E%D7%A8%D7%90%D7%94%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%AA%D7%A2%D7%9C/" target="_blank" class="media-link">
-                        <i class="fas fa-headphones"></i> האזנה לפרק
-                    </a>
+
+                <div class="media-item">
+                    <span class="media-type">כנס ICAMH 2025</span>
+                    <h3>Scale is All We Need: Generative AI for Advancing Mental Health</h3>
+                    <p>הרצאה בכנס הבינלאומי ICAMH על הפוטנציאל של AI גנרטיבי לקדם את תחום בריאות הנפש.</p>
+                    <a href="https://icamh.org.il/wp-content/uploads/2025/05/Zohar-Elyoseph-4.pdf" target="_blank">צפייה במצגת (PDF)</a>
                 </div>
 
-                <!-- LearnTech Podcast -->
-                <div class="media-card podcast-card">
-                    <div class="media-badge">פודקאסט</div>
-                    <div class="media-icon"><i class="fas fa-robot"></i></div>
-                    <h3>האם מכונות יכולות להבין את האדם?</h3>
-                    <p>פרק 130 בפודקאסט LearnTech - שיחה מרתקת על יכולות המכונות להבין רגשות אנושיים, עם דגש על המחקרים שמראים כי AI מסוגל לזהות רגשות ברמה גבוהה.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-microphone"></i> LearnTech - פרק 130</span>
-                    </div>
-                    <a href="https://www.learntech.co.il/podcast/pod130/" target="_blank" class="media-link">
-                        <i class="fas fa-headphones"></i> האזנה לפרק
-                    </a>
-                </div>
-
-                <!-- Interview Israel Hayom -->
-                <div class="media-card interview-card">
-                    <div class="media-badge">ראיון</div>
-                    <div class="media-icon"><i class="fas fa-newspaper"></i></div>
-                    <h3>"יודעת לזהות רגשות טוב יותר מאנשים"</h3>
-                    <p>ראיון בישראל היום על מחקר חלוצי המראה כי בינה מלאכותית מסייעת להכשיר מטפלים בבריאות הנפש ומדגימה יכולות מרשימות בזיהוי רגשות.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-newspaper"></i> ישראל היום</span>
-                    </div>
-                    <a href="https://www.israelhayom.co.il/tech/tech-news/article/16967303" target="_blank" class="media-link">
-                        <i class="fas fa-external-link-alt"></i> קריאת הכתבה
-                    </a>
-                </div>
-
-                <!-- MAKO Interview -->
-                <div class="media-card interview-card">
-                    <div class="media-badge">ראיון</div>
-                    <div class="media-icon"><i class="fas fa-tv"></i></div>
-                    <h3>"הצ'אט GPT הוא כמו חבר אמיתי שמכיר אותי"</h3>
-                    <p>ראיון ב-MAKO על השפעת ChatGPT על ילדים ובני נוער, עם התייחסות לסיכונים ולהזדמנויות שמביאה הטכנולוגיה לעולם החינוך והנפש.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-tv"></i> MAKO</span>
-                    </div>
-                    <a href="https://www.mako.co.il/home-family-kids/Article-8e8276fff93d391027.htm" target="_blank" class="media-link">
-                        <i class="fas fa-external-link-alt"></i> קריאת הכתבה
-                    </a>
-                </div>
-
-                <!-- Conference -->
-                <div class="media-card conference-card">
-                    <div class="media-badge">כנס</div>
-                    <div class="media-icon"><i class="fas fa-users-rectangle"></i></div>
+                <div class="media-item">
+                    <span class="media-type">כנס בינלאומי</span>
                     <h3>European Conference of Digital Psychology</h3>
-                    <p>הרצאה על יישומי AI בפסיכולוגיה במסגרת הכנס האירופי לפסיכולוגיה דיגיטלית. מצגת על ממצאי מחקר חדשניים בנושא יכולות קוגניטיביות-חברתיות של AI.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Digital Psychology EU</span>
-                    </div>
-                    <a href="https://digitalpsychology.eu/speakers/elyoseph-zohar/" target="_blank" class="media-link">
-                        <i class="fas fa-external-link-alt"></i> עמוד הדובר
-                    </a>
+                    <p>הרצאה על יישומי AI בפסיכולוגיה במסגרת הכנס האירופי לפסיכולוגיה דיגיטלית.</p>
+                    <a href="https://digitalpsychology.eu/speakers/elyoseph-zohar/" target="_blank">עמוד הדובר</a>
                 </div>
 
-                <!-- The Artificial Third -->
-                <div class="media-card project-card">
-                    <div class="media-badge">פרויקט</div>
-                    <div class="media-icon"><i class="fas fa-diagram-project"></i></div>
-                    <h3>השלישי המלאכותי - The Artificial Third</h3>
-                    <p>קהילת מחקר ופיתוח בנושא שילוב בינה מלאכותית בתחום בריאות הנפש. פרופ' אליוסף חבר בצוות המחקר הכולל פסיכולוגים וחוקרים מובילים. הקהילה מקיימת הרצאות וכנסים.</p>
-                    <div class="media-meta">
-                        <span><i class="fas fa-globe"></i> artificialthird.com</span>
-                    </div>
-                    <a href="https://www.artificialthird.com/lectures" target="_blank" class="media-link">
-                        <i class="fas fa-external-link-alt"></i> הרצאות הקהילה
-                    </a>
+                <div class="media-item">
+                    <span class="media-type">פודקאסט</span>
+                    <h3>דיבורי בינה — מעבר למראה הדיגיטלית</h3>
+                    <p>פרק מיוחד עם תום הגלעדי על ההשפעה המהפכנית של AI על עולם בריאות הנפש.</p>
+                    <a href="https://tomhagiladi.podbean.com/e/%D7%A4%D7%A8%D7%A7-10-%D7%9E%D7%A2%D7%91%D7%A8-%D7%9C%D7%9E%D7%A8%D7%90%D7%94%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%AA%D7%A2%D7%9C/" target="_blank">האזנה לפרק</a>
                 </div>
+
+                <div class="media-item">
+                    <span class="media-type">פודקאסט</span>
+                    <h3>האם מכונות יכולות להבין את האדם?</h3>
+                    <p>פרק 130 ב-LearnTech — שיחה על יכולות המכונות להבין רגשות אנושיים.</p>
+                    <a href="https://www.learntech.co.il/podcast/pod130/" target="_blank">האזנה לפרק</a>
+                </div>
+
+                <div class="media-item">
+                    <span class="media-type">ישראל היום</span>
+                    <h3>"יודעת לזהות רגשות טוב יותר מאנשים"</h3>
+                    <p>כתבה על מחקר חלוצי המראה כי AI מסייע להכשיר מטפלים בבריאות הנפש.</p>
+                    <a href="https://www.israelhayom.co.il/tech/tech-news/article/16967303" target="_blank">קריאת הכתבה</a>
+                </div>
+
+                <div class="media-item">
+                    <span class="media-type">MAKO</span>
+                    <h3>"הצ'אט GPT הוא כמו חבר אמיתי שמכיר אותי"</h3>
+                    <p>ראיון על השפעת ChatGPT על ילדים ובני נוער — סיכונים והזדמנויות.</p>
+                    <a href="https://www.mako.co.il/home-family-kids/Article-8e8276fff93d391027.htm" target="_blank">קריאת הכתבה</a>
+                </div>
+
+                <div class="media-item">
+                    <span class="media-type">פורטל מס"ע</span>
+                    <h3>פרופיל חוקר — פורטל מס"ע, משרד החינוך</h3>
+                    <p>פרופיל מחקרי במסגרת פורטל החוקרים של משרד החינוך.</p>
+                    <a href="https://portal.macam.ac.il/masa-creators/%D7%96%D7%95%D7%94%D7%A8-%D7%90%D7%9C%D7%99%D7%95%D7%A1%D7%A3/" target="_blank">לפרופיל</a>
+                </div>
+
+                <div class="media-item">
+                    <span class="media-type">פרויקט</span>
+                    <h3>השלישי המלאכותי — The Artificial Third</h3>
+                    <p>קהילת מחקר ופיתוח בנושא שילוב AI בבריאות הנפש. הרצאות, כנסים ומשאבים.</p>
+                    <a href="https://www.artificialthird.com" target="_blank">לאתר הקהילה</a>
+                </div>
+
             </div>
 
-            <!-- Key Quotes Section -->
-            <div class="quotes-section">
-                <h3 class="quotes-title">ציטוטים נבחרים</h3>
-                <div class="quotes-carousel">
-                    <div class="quote-card active">
-                        <blockquote>
-                            <i class="fas fa-quote-right quote-icon"></i>
-                            <p>"הבינה המלאכותית עוזרת לאנשי מקצוע להיות יותר מקצועיים ויותר אנושיים."</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-card">
-                        <blockquote>
-                            <i class="fas fa-quote-right quote-icon"></i>
-                            <p>"ישנן ראיות לכך שלבינה מלאכותית קיימות יכולות לזהות רגשות יותר טוב מאנשים, גם במדיום של טקסט, וידאו ותמונה."</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-card">
-                        <blockquote>
-                            <i class="fas fa-quote-right quote-icon"></i>
-                            <p>"בטיפול פסיכולוגי, המרכיב הכי חשוב הוא הקשר האנושי. אין עדיין מספיק מחקרים להבין אם בינה מלאכותית יכולה לנהל את כל רכיבי הטיפול."</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-card">
-                        <blockquote>
-                            <i class="fas fa-quote-right quote-icon"></i>
-                            <p>"הבינה המלאכותית הפכה בפועל לאחד מספקי בריאות הנפש הגדולים בעולם."</p>
-                        </blockquote>
-                    </div>
+            <!-- Quotes -->
+            <div class="quotes-block">
+                <div class="quote active" id="quote-0">
+                    <p>"הבינה המלאכותית עוזרת לאנשי מקצוע להיות יותר מקצועיים ויותר אנושיים."</p>
                 </div>
-                <div class="quote-dots" id="quoteDots"></div>
+                <div class="quote" id="quote-1">
+                    <p>"ישנן ראיות לכך שלבינה מלאכותית קיימות יכולות לזהות רגשות יותר טוב מאנשים, גם במדיום של טקסט, וידאו ותמונה."</p>
+                </div>
+                <div class="quote" id="quote-2">
+                    <p>"בטיפול פסיכולוגי, המרכיב הכי חשוב הוא הקשר האנושי. אין עדיין מספיק מחקרים להבין אם בינה מלאכותית יכולה לנהל את כל רכיבי הטיפול."</p>
+                </div>
+                <div class="quote" id="quote-3">
+                    <p>"הבינה המלאכותית הפכה בפועל לאחד מספקי בריאות הנפש הגדולים בעולם."</p>
+                </div>
+                <div class="quote-nav" id="quoteNav"></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
+    <!-- Contact -->
+    <section class="section section-alt" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">יצירת קשר</h2>
-                <div class="title-decoration"></div>
-            </div>
+            <h2 class="section-title">יצירת קשר</h2>
             <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-university"></i>
-                        <h3>שיוך אקדמי ראשי</h3>
-                        <p>הפקולטה לחינוך, אוניברסיטת חיפה</p>
-                        <p>בית הספר לטיפול, ייעוץ והתפתחות האדם</p>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fas fa-building"></i>
-                        <h3>שיוך נוסף</h3>
-                        <p>המכללה האקדמית עמק יזרעאל (מקס שטרן)</p>
-                        <p>ראש המרכז למחקר פסיכוביולוגי</p>
-                    </div>
-                    <div class="contact-links">
-                        <h3>פרופילים מקוונים</h3>
-                        <div class="social-links">
-                            <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank" class="social-link" title="Google Scholar">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Google Scholar</span>
-                            </a>
-                            <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank" class="social-link" title="ResearchGate">
-                                <i class="fab fa-researchgate"></i>
-                                <span>ResearchGate</span>
-                            </a>
-                            <a href="https://orcid.org/0000-0002-5717-4074" target="_blank" class="social-link" title="ORCID">
-                                <i class="fab fa-orcid"></i>
-                                <span>ORCID</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/zohar-elyoseph-b94352260/" target="_blank" class="social-link" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn</span>
-                            </a>
-                            <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank" class="social-link" title="University of Haifa">
-                                <i class="fas fa-university"></i>
-                                <span>University of Haifa</span>
-                            </a>
-                            <a href="https://www.artificialthird.com" target="_blank" class="social-link" title="The Artificial Third">
-                                <i class="fas fa-robot"></i>
-                                <span>The Artificial Third</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="contact-block">
+                    <h3>שיוך אקדמי ראשי</h3>
+                    <p>הפקולטה לחינוך, אוניברסיטת חיפה</p>
+                    <p>בית הספר לטיפול, ייעוץ והתפתחות האדם</p>
                 </div>
+                <div class="contact-block">
+                    <h3>שיוך נוסף</h3>
+                    <p>המכללה האקדמית עמק יזרעאל (מקס שטרן)</p>
+                    <p>ראש המרכז למחקר פסיכוביולוגי</p>
+                </div>
+                <div class="contact-block">
+                    <h3>שיוך בינלאומי</h3>
+                    <p>אימפריאל קולג' לונדון</p>
+                    <p>הפקולטה לרפואה, מחלקת מדעי המוח</p>
+                </div>
+            </div>
+            <div class="contact-links">
+                <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank">ResearchGate</a>
+                <a href="https://orcid.org/0000-0002-5717-4074" target="_blank">ORCID</a>
+                <a href="https://www.linkedin.com/in/zohar-elyoseph-b94352260/" target="_blank">LinkedIn</a>
+                <a href="https://cris.haifa.ac.il/en/persons/zohar-elyoseph" target="_blank">University of Haifa</a>
+                <a href="https://www.artificialthird.com" target="_blank">The Artificial Third</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <p class="footer-name">Prof. Zohar Elyoseph</p>
-                    <p>University of Haifa | Faculty of Education</p>
-                </div>
-                <div class="footer-links">
-                    <a href="https://scholar.google.com/citations?user=283GF4oAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="https://www.researchgate.net/profile/Zohar-Elyoseph" target="_blank"><i class="fab fa-researchgate"></i></a>
-                    <a href="https://www.linkedin.com/in/zohar-elyoseph-b94352260/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://orcid.org/0000-0002-5717-4074" target="_blank"><i class="fab fa-orcid"></i></a>
-                </div>
-            </div>
+        <div class="container footer-inner">
+            <p>Prof. Zohar Elyoseph — University of Haifa, Faculty of Education</p>
         </div>
     </footer>
 
-    <!-- Edit Mode Panel -->
+    <!-- Edit Panel -->
     <div class="edit-panel" id="editPanel">
-        <div class="edit-panel-header">
-            <h3><i class="fas fa-pen"></i> מצב עריכה</h3>
-            <button class="edit-panel-close" id="editPanelClose"><i class="fas fa-times"></i></button>
+        <div class="edit-panel-top">
+            <span>מצב עריכה</span>
+            <button id="editPanelClose">X</button>
         </div>
         <div class="edit-panel-body">
-            <p>לחצו על טקסט כלשהו באתר כדי לערוך אותו.</p>
-            <p>שינויים נשמרים אוטומטית ב-Local Storage של הדפדפן.</p>
-            <div class="edit-actions">
-                <button class="btn btn-primary" id="saveEdits"><i class="fas fa-save"></i> שמירת שינויים</button>
-                <button class="btn btn-outline" id="resetEdits"><i class="fas fa-undo"></i> איפוס שינויים</button>
-                <button class="btn btn-outline" id="exportEdits"><i class="fas fa-download"></i> ייצוא HTML</button>
-            </div>
+            <p>לחצו על טקסט כלשהו באתר כדי לערוך אותו. שינויים נשמרים ב-Local Storage.</p>
+            <button class="btn-primary" id="saveEdits">שמירת שינויים</button>
+            <button class="btn-secondary" id="resetEdits">איפוס שינויים</button>
+            <button class="btn-secondary" id="exportEdits">ייצוא HTML</button>
         </div>
     </div>
 
