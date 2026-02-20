@@ -1,0 +1,312 @@
+{
+  "overall": {
+    "aggressiveness": {
+      "avg": 0.1,
+      "max": 3,
+      "pct_nonzero": 4.7
+    },
+    "cynicism": {
+      "avg": 0.286,
+      "max": 3,
+      "pct_nonzero": 14.5
+    },
+    "not_understanding": {
+      "avg": 0.028,
+      "max": 3,
+      "pct_nonzero": 1.3
+    },
+    "nudging": {
+      "avg": 1.395,
+      "max": 3,
+      "pct_nonzero": 96.4
+    }
+  },
+  "conversations": [
+    {
+      "run_id": "0380b467-a932-4e40-86a5-f6d5a9867e41",
+      "user_name": "Yuval Haber",
+      "num_messages": 1,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.0,
+        "not_understanding": 0.0,
+        "nudging": 2.0
+      }
+    },
+    {
+      "run_id": "09888e0c-cd3a-4211-97a3-d85f84277524",
+      "user_name": "Spencer",
+      "num_messages": 30,
+      "avg_scores": {
+        "aggressiveness": 0.87,
+        "cynicism": 1.03,
+        "not_understanding": 0.07,
+        "nudging": 1.27
+      }
+    },
+    {
+      "run_id": "192d595f-4d9f-4ed4-aa3b-c143df301c6a",
+      "user_name": "p.freeman@student.reading.ac.uk",
+      "num_messages": 32,
+      "avg_scores": {
+        "aggressiveness": 0.06,
+        "cynicism": 0.31,
+        "not_understanding": 0.0,
+        "nudging": 1.34
+      }
+    },
+    {
+      "run_id": "23abc708-2109-4497-92ec-fc006c42b718",
+      "user_name": "H",
+      "num_messages": 30,
+      "avg_scores": {
+        "aggressiveness": 0.1,
+        "cynicism": 0.17,
+        "not_understanding": 0.1,
+        "nudging": 1.47
+      }
+    },
+    {
+      "run_id": "39ecbc64-ee81-4571-900b-27ae3f68379c",
+      "user_name": "Tymon",
+      "num_messages": 26,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.42,
+        "not_understanding": 0.0,
+        "nudging": 1.46
+      }
+    },
+    {
+      "run_id": "3ed4cfb4-0cbc-4867-a6f5-6dd027834386",
+      "user_name": "Charlie Broadberry",
+      "num_messages": 22,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.18,
+        "not_understanding": 0.09,
+        "nudging": 1.23
+      }
+    },
+    {
+      "run_id": "4c97a81a-44e7-48a3-b58d-17edf2daa8c2",
+      "user_name": "Nick",
+      "num_messages": 9,
+      "avg_scores": {
+        "aggressiveness": 0.22,
+        "cynicism": 0.22,
+        "not_understanding": 0.0,
+        "nudging": 1.56
+      }
+    },
+    {
+      "run_id": "4dcf8e1e-09f3-40b6-80b0-ac5ab91f1db2",
+      "user_name": "Danica",
+      "num_messages": 18,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.5,
+        "not_understanding": 0.11,
+        "nudging": 1.61
+      }
+    },
+    {
+      "run_id": "4ea22d75-fb18-4b14-80b8-7e22bde444e3",
+      "user_name": "Spencer",
+      "num_messages": 19,
+      "avg_scores": {
+        "aggressiveness": 0.16,
+        "cynicism": 0.32,
+        "not_understanding": 0.0,
+        "nudging": 1.37
+      }
+    },
+    {
+      "run_id": "662270bc-aabf-4c38-ad39-59a241450cd1",
+      "user_name": "Toby",
+      "num_messages": 19,
+      "avg_scores": {
+        "aggressiveness": 0.11,
+        "cynicism": 0.21,
+        "not_understanding": 0.0,
+        "nudging": 1.32
+      }
+    },
+    {
+      "run_id": "6c404453-2096-40eb-8fc6-b0fa3622cf75",
+      "user_name": "andrew",
+      "num_messages": 25,
+      "avg_scores": {
+        "aggressiveness": 0.08,
+        "cynicism": 0.08,
+        "not_understanding": 0.0,
+        "nudging": 1.36
+      }
+    },
+    {
+      "run_id": "75629747-9107-4a4d-adce-179a252390db",
+      "user_name": "Ali",
+      "num_messages": 30,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.2,
+        "not_understanding": 0.0,
+        "nudging": 1.37
+      }
+    },
+    {
+      "run_id": "9628f389-6c64-4323-b0df-646716d7e3d1",
+      "user_name": "Tiffany",
+      "num_messages": 22,
+      "avg_scores": {
+        "aggressiveness": 0.09,
+        "cynicism": 0.41,
+        "not_understanding": 0.0,
+        "nudging": 1.27
+      }
+    },
+    {
+      "run_id": "96a502a6-8565-4ae5-b9e4-82fc19b5bd15",
+      "user_name": "Alexander Bly",
+      "num_messages": 19,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.11,
+        "not_understanding": 0.0,
+        "nudging": 1.37
+      }
+    },
+    {
+      "run_id": "97b9bfd9-c3bf-495e-a8f7-731637d7b246",
+      "user_name": "Roberto Bodegas",
+      "num_messages": 18,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.11,
+        "not_understanding": 0.0,
+        "nudging": 1.44
+      }
+    },
+    {
+      "run_id": "a5c1a2d9-1adc-416c-a63e-3cfa7ad9a230",
+      "user_name": "Toby",
+      "num_messages": 27,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.26,
+        "not_understanding": 0.15,
+        "nudging": 1.19
+      }
+    },
+    {
+      "run_id": "b25d872e-bd87-4d49-b118-3a7eaec07c53",
+      "user_name": "sannat",
+      "num_messages": 12,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.0,
+        "not_understanding": 0.0,
+        "nudging": 1.58
+      }
+    },
+    {
+      "run_id": "b2ee6d23-9100-4ed1-911e-0a8f5893ed60",
+      "user_name": "Will",
+      "num_messages": 4,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.5,
+        "not_understanding": 0.0,
+        "nudging": 1.0
+      }
+    },
+    {
+      "run_id": "b73f7e02-e24c-4719-b136-9293bc830ce9",
+      "user_name": "Tash",
+      "num_messages": 7,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.0,
+        "not_understanding": 0.0,
+        "nudging": 1.57
+      }
+    },
+    {
+      "run_id": "c08e9386-e182-4feb-a24b-17efaeda73a9",
+      "user_name": "Isatu",
+      "num_messages": 13,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.15,
+        "not_understanding": 0.0,
+        "nudging": 1.46
+      }
+    },
+    {
+      "run_id": "c6ea7062-a29c-4b8b-88d5-bb42e51b49b8",
+      "user_name": "Max",
+      "num_messages": 11,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.45,
+        "not_understanding": 0.0,
+        "nudging": 1.64
+      }
+    },
+    {
+      "run_id": "d5d137df-ff42-4355-aa98-267b08a5d584",
+      "user_name": "Roberto Bodegas",
+      "num_messages": 1,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.0,
+        "not_understanding": 0.0,
+        "nudging": 1.0
+      }
+    },
+    {
+      "run_id": "ddcea009-0ec4-4fcd-9ae9-96f87d73c40f",
+      "user_name": "Allysha",
+      "num_messages": 26,
+      "avg_scores": {
+        "aggressiveness": 0.19,
+        "cynicism": 0.12,
+        "not_understanding": 0.0,
+        "nudging": 1.42
+      }
+    },
+    {
+      "run_id": "eeb43ba7-527e-4614-b995-4a929bd46766",
+      "user_name": "Louise",
+      "num_messages": 17,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.12,
+        "not_understanding": 0.0,
+        "nudging": 1.35
+      }
+    },
+    {
+      "run_id": "f22ae2d8-8cb8-4b4d-9d6b-361ace1f94ca",
+      "user_name": "Mardery",
+      "num_messages": 6,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.67,
+        "not_understanding": 0.0,
+        "nudging": 1.83
+      }
+    },
+    {
+      "run_id": "f5348420-5977-435f-94bf-f2892e4c12fd",
+      "user_name": "Will",
+      "num_messages": 24,
+      "avg_scores": {
+        "aggressiveness": 0.0,
+        "cynicism": 0.25,
+        "not_understanding": 0.0,
+        "nudging": 1.54
+      }
+    }
+  ]
+}
